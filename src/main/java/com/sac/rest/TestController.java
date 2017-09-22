@@ -21,8 +21,10 @@ public class TestController {
 	public List<String> getUserList() {
 		List<String> r = new ArrayList<String>();
 		r.add("ss");
+		System.out.print("今天");
 		return r;
 	}
+
 
 	@ApiOperation(value = "改变用户", notes = "根据User对象改变用户")
 	@ApiImplicitParam(name = "stu", value = "用户详细实体user", required = true, dataType = "Stu")

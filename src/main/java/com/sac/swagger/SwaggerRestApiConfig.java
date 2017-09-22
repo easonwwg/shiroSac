@@ -26,7 +26,7 @@ public class SwaggerRestApiConfig {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Spring 中使用Swagger2构建RESTful APIs")
-                .termsOfServiceUrl("http://baidu.com").contact("王文贵").version("1.1").build();
+        return new ApiInfoBuilder().title("restful webapi")
+                .termsOfServiceUrl("http://baidu.com").contact("文贵").version("1.1").build();
     }
 }
