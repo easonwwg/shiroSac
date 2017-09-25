@@ -1,3 +1,0 @@
-0:0:0:0:0:0:0:1 - - [24/Sep/2017:13:45:34 +0800] "GET /File/upLoad HTTP/1.1" 405 1045 http-bio-8081-exec-1 99
-0:0:0:0:0:0:0:1 - - [24/Sep/2017:13:45:35 +0800] "GET /favicon.ico HTTP/1.1" 404 949 http-bio-8081-exec-2 4
-0:0:0:0:0:0:0:1 - - [24/Sep/2017:13:46:22 +0800] "POST /File/upLoad HTTP/1.1" 200 14 http-bio-8081-exec-3 44593
