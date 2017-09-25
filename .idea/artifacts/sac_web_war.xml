@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="sac_web:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="shiro.web.war">
-      <element id="artifact" artifact-name="sac_web:war exploded" />
-    </root>
-  </artifact>
-</component>
