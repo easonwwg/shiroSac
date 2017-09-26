@@ -19,6 +19,11 @@ public class UsersController {
 
     /**
      * 跳转到查询所有角色的页面
+     * http://localhost:8081/users/list.form?typer=23 可以访问
+     * http://localhost:8081/users/list.form  可以访问
+     * http://localhost:8081/users/list.do  可以访问
+     * http://localhost:8081/users/list.action  可以访问
+     * http://localhost:8081/users/list.action  不可以访问
      * @return
      */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
