@@ -1,7 +1,6 @@
 package com.sac.pojo.system;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by EAISON on 2017/9/28.
@@ -16,7 +15,7 @@ public class Role implements Serializable {
 
     /**
      * 一个角色对应多资源权限
-     */
+     *//*
     private List<Resource> resources;
 
 
@@ -26,7 +25,7 @@ public class Role implements Serializable {
 
     public void setResources(List<Resource> resources) {
         this.resources = resources;
-    }
+    }*/
 
     public Long getId() {
         return id;
