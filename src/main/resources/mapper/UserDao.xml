@@ -4,5 +4,61 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sac.dao.system.UserDao">
 
+	<!--表字段的代码块-->
+	<sql id="Base_Column_List">
+      id, nickname, email, pswd, create_time, last_login_time,status
+	</sql>
+
+
+	<insert id="add" useGeneratedKeys="true" keyProperty="id"
+			parameterType="com.sac.pojo.system.User">
+     insert into u_user (id, nickname, email,
+      pswd, create_time, last_login_time,status
+      )
+    values (#{record.id},#{record.nickname}, #{record.email},
+      #{record.pswd}, #{record.createTime}, #{record.lastLoginTime},
+      #{record.status}
+      )
+	</insert>
+
+	<select id="getByWhere" parameterType="string"
+			resultType="com.sac.pojo.system.User">
+       SELECT
+        <include refid="Base_Column_List"></include>
+		FROM u_user
+		WHERE
+		nickname=#{userName}
+	</select>
+
+	<select id="userLists"
+			resultType="com.sac.pojo.system.User">
+		SELECT
+		<include refid="Base_Column_List"></include>
+		FROM u_user
+	</select>
+
+	<select id="listRoleByUserId" resultType="string"
+			parameterType="int">
+		SELECT
+		ur.name
+		from u_role ur
+		left JOIN  u_user_role uur on
+		ur.id=uur.rid
+		LEFT  JOIN  u_user uu ON
+		uu.id=uur.uid
+		WHERE
+		uu.id=#{uid}
+	</select>
+
+	<select id="login" resultType="com.sac.pojo.system.User">
+		SELECT
+		<include refid="Base_Column_List"></include>
+		FROM u_user
+		WHERE
+		nickname=#{name}
+		AND
+		pswd=#{pwd}
+
+	</select>
 
 </mapper>

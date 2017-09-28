@@ -16,7 +16,7 @@ sac
 </body>
 <script>
     $(document).ready(function () {
-        alert("hello");
+        alert("进入到首页");
     });
 
 </script>
