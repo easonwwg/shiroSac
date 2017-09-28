@@ -12,8 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by EAISON on 2017/9/28.
@@ -34,7 +37,7 @@ public class LoginController {
      */
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public  String toLogin(){
-        return  "index";
+        return "login";
     }
     /**
      * 跳转到首页
@@ -43,6 +46,15 @@ public class LoginController {
     @RequestMapping(value = "/main",method = RequestMethod.GET)
     public  String toMainIndex(){
         return  "main";
+    }
+
+    /**
+     * 未授权
+     * @return
+     */
+    @RequestMapping(value = "/error",method = RequestMethod.GET)
+    public  String toErrorIndex(){
+        return  "error";
     }
 
 
@@ -54,7 +66,7 @@ public class LoginController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/checklogin", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
     public String login(String userName,String passwd, Model model,
                         HttpServletRequest request) {
 
@@ -67,8 +79,8 @@ public class LoginController {
              }
              catch (AuthenticationException e)
              {
-                 model.addAttribute("message", "用户名或密码错误！");
-                 return "index";
+                model.addAttribute("errormsg", "用户名或者密码错误");
+                 return "login";
              }
             //跳转到首页
              return  "main";

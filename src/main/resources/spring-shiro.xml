@@ -10,20 +10,42 @@
 
        <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
               <property name="realm" ref="sampleRealm"/>
+              <property name="cacheManager" ref="ehCacheManager"/>
+       </bean>
 
+       <!-- 配置 shiro 的 ehcache 缓存相关,这个缓存只和 Realm 相关 -->
+       <bean id="ehCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+              <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
        </bean>
 
        <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
               <property name="securityManager" ref="securityManager" />
-              <!-- 如果认证不通过,浏览器通过 Get 方式请求到 /login 上 -->
+              <!-- 如果认证不通过,浏览器通过 Get 方式请求到 /login 上  可以直接些jsp吗？ -->
               <property name="loginUrl" value="/user/login"/>
               <property name="successUrl" value="/user/main"/>
+              <property name="unauthorizedUrl" value="/user/error" />
               <property name="filterChainDefinitions">
               <value>
                    <!--  /user/login=anon-->
+                    /user/login = anon
+                     /user/checklogin =anon
+                     /resources/** = anon
+                     /user/error =anon
+                     /** = authc
               </value>
               </property>
        </bean>
        <!-- Shiro生命周期处理器-->
        <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+       <!-- AOP式方法级权限检查 -->
+       <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+             depends-on="lifecycleBeanPostProcessor">
+            <!--  <property name="proxyTargetClass" value="true" />-->
+       </bean>
+
+       <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+              <property name="securityManager" ref="securityManager" />
+       </bean>
+
 </beans>

@@ -22,9 +22,6 @@ jQuery(document).ready(function() {
             });
             return false;
         }
-		//登陆
-		//。。。。。。。。
-        alert("ok")
     });
 
     $('.page-container form .username, .page-container form .password').keyup(function(){

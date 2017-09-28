@@ -1,4 +1,5 @@
 <%@include file="/resources/common/basePath.jsp"%>
+<%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 
@@ -27,11 +28,11 @@
 
 <div class="page-container">
     <h1>Login</h1>
-    <form action="" method="post">
-        <input type="text" name="username" class="username" placeholder="Username">
-        <input type="password" name="password" class="password" placeholder="Password">
+    <form action="/user/checklogin" method="post">
+        <input type="text" name="userName" class="username" placeholder="Username">
+        <input type="password" name="passwd" class="password" placeholder="Password">
         <button type="submit">Sign me in</button>
-        <div class="error"><span>+</span></div>
+        <div class="errordiv"><span>${errormsg}</span></div>
     </form>
 
 </div>
