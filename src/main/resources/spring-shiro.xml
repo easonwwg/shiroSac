@@ -12,6 +12,8 @@
                <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
                    <property name="hashAlgorithmName" value="MD5"></property>
                 <!--   <property name="hashIterations" value="1"></property>-->
+                   <!--也可以配置yan-->
+                  <!-- <property name="hashSalted" value="true"></property>-->
                </bean>
            </property>
        </bean>
