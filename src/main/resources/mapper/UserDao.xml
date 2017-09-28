@@ -56,9 +56,6 @@
 		FROM u_user
 		WHERE
 		nickname=#{name}
-		AND
-		pswd=#{pwd}
-
 	</select>
 
 </mapper>

@@ -24,8 +24,7 @@ public interface UserService {
     /**
      * 登陆验证
      * @param name
-     * @param pwd
      * @return
      */
-    User login(String name,String pwd);
+    User login(String name);
 }

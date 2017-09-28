@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User login(String name, String pwd) {
-        return userDao.login(name,pwd);
+    public User login(String name) {
+        return userDao.login(name);
     }
 }
 

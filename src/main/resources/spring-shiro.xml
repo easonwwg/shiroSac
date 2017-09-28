@@ -6,7 +6,15 @@
        <!-- 授权 认证
         自定义
         -->
-       <bean id="sampleRealm" class="com.sac.shiro.core.SecurityRealm" ></bean>
+       <bean id="sampleRealm" class="com.sac.shiro.core.SecurityRealm" >
+           <!--密碼通過credentialsMatcher比對-->
+           <property name="credentialsMatcher">
+               <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+                   <property name="hashAlgorithmName" value="MD5"></property>
+                <!--   <property name="hashIterations" value="1"></property>-->
+               </bean>
+           </property>
+       </bean>
 
        <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
               <property name="realm" ref="sampleRealm"/>

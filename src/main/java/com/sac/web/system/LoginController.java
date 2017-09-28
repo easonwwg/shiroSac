@@ -69,7 +69,6 @@ public class LoginController {
     @RequestMapping(value = "/checklogin", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
     public String login(String userName,String passwd, Model model,
                         HttpServletRequest request) {
-
         Subject currentSubject = SecurityUtils.getSubject();
         //已经没有被认证
         if (!currentSubject.isAuthenticated()){

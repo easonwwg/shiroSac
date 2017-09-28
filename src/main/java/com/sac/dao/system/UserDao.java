@@ -33,9 +33,8 @@ public interface UserDao {
     /**
      * 登陆验证
      * @param name
-     * @param pwd
      * @return
      */
-    User login(@Param("name")String name,@Param("pwd")String pwd);
+    User login(@Param("name")String name);
 
 }
