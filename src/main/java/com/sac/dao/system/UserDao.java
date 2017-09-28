@@ -1,6 +1,7 @@
 package com.sac.dao.system;
 
 import com.sac.pojo.system.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -29,6 +30,12 @@ public interface UserDao {
     List<String> listRoleByUserId(Integer uid);
 
 
-
+    /**
+     * 登陆验证
+     * @param name
+     * @param pwd
+     * @return
+     */
+    User login(@Param("name")String name,@Param("pwd")String pwd);
 
 }
