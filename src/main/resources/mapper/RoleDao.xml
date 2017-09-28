@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sac.dao.system.RoleDao">
+    <select id="GetResourcesByRoleId" resultType="string"
+            parameterType="int">
+        select
+          u_p.name from  u_permission u_p
+        LEFT JOIN u_role_permission urp
+          on u_p.id=urp.pid
+        LEFT JOIN u_role ur
+        on ur.id=urp.rid
+        where ur.id=#{roleId}
+    </select>
+</mapper>
