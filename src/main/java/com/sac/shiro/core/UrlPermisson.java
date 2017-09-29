@@ -26,9 +26,9 @@ public class UrlPermisson implements Permission {
         UrlPermisson urlPermisson = (UrlPermisson) p;
         PatternMatcher patternMatcher
                 = new AntPathMatcher();
-        logger.debug("--------此次用户的权限资源是"+this.url+ "---用户访问的url是"+urlPermisson.url);
+        logger.error("--------此次用户的权限资源是"+this.url+ "---用户访问的url是"+urlPermisson.url);
         boolean macth = patternMatcher.matches(this.url, urlPermisson.url);
-        logger.debug("--------用户的此权限结果是--------" + macth);
+        logger.error("--------用户的此权限结果是--------" + macth);
         return macth;
     }
 }

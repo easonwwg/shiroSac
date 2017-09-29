@@ -47,7 +47,7 @@ public class restTest {
        /* User u= userDao.login("eason");
         System.out.print(u);*/
 
-        String sta=  new Md5Hash("1qazXSW@","2016-06-16 11:15:33").toString();
+        String sta=  new Md5Hash("1qazXSW@","2017-06-16 11:15:33").toString();
         System.out.print(sta);
     }
 

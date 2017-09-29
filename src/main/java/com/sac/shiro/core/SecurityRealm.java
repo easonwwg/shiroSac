@@ -53,6 +53,8 @@ public class SecurityRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.setRoles(roles.stream().collect(Collectors.toSet()));
         info.setStringPermissions(resources.stream().collect(Collectors.toSet()));
+        System.out.println("角色是------------------------"+roles);
+        System.out.println("權限是------------------------"+resources);
         return info;
     }
 
