@@ -86,10 +86,10 @@ public class LoginController {
                 return "login";
             }
             //跳转到首页 但是需要验证用户是否有访问首页的权限
-            return "redirect:/usr/main";
+            return "redirect:/user/main";
         }
         //直接跳转到首页
-        return "redirect:/usr/main";
+        return "redirect:/user/main";
     }
 
 }
