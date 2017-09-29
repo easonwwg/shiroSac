@@ -11,9 +11,9 @@
            <property name="credentialsMatcher">
                <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
                    <property name="hashAlgorithmName" value="MD5"></property>
-                <!--   <property name="hashIterations" value="1"></property>-->
+                   <property name="hashIterations" value="1"></property>
                    <!--也可以配置yan-->
-                  <!-- <property name="hashSalted" value="true"></property>-->
+                   <property name="hashSalted" value="true"></property>
                </bean>
            </property>
        </bean>
@@ -36,7 +36,6 @@
               <property name="unauthorizedUrl" value="/user/error" />
               <property name="filterChainDefinitions">
               <value>
-                   <!--  /user/login=anon-->
                     /user/login = anon
                      /user/checklogin =anon
                      /resources/** = anon
