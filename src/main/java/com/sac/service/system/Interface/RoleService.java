@@ -8,8 +8,8 @@ import java.util.List;
 public interface RoleService {
     /**
      * 角色對應的資源權限
-     * @param roleId
+     * @param roleName
      * @return
      */
-    List<String> GetResourcesByRoleId(int roleId);
+    List<String> GetResourcesByRoleId(String roleName);
 }

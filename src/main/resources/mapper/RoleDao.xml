@@ -4,13 +4,13 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sac.dao.system.RoleDao">
     <select id="GetResourcesByRoleId" resultType="string"
-            parameterType="int">
+            parameterType="string">
         select
-          u_p.name from  u_permission u_p
+          u_p.url from  u_permission u_p
         LEFT JOIN u_role_permission urp
           on u_p.id=urp.pid
         LEFT JOIN u_role ur
         on ur.id=urp.rid
-        where ur.id=#{roleId}
+        where ur.id=(SELECT id FROM  u_role WHERE  u_role.name=#{roleName})
     </select>
 </mapper>

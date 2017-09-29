@@ -9,8 +9,8 @@ public interface RoleDao {
 
     /**
      * 角色對應的資源權限
-     * @param roleId
+     * @param roleName
      * @return
      */
-    List<String> GetResourcesByRoleId(int roleId);
+    List<String> GetResourcesByRoleId(String roleName);
 }

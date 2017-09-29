@@ -1,6 +1,9 @@
 import com.sac.dao.system.RoleDao;
 import com.sac.dao.system.UserDao;
 import com.sac.pojo.system.User;
+import org.apache.shiro.crypto.hash.Md5Hash;
+import org.apache.shiro.util.AntPathMatcher;
+import org.apache.shiro.util.PatternMatcher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +44,21 @@ public class restTest {
       /* System.out.print(userDao.getByWhere("eason"));*/
         /*System.out.print(userDao.listRoleByUserId(1));*/
        /* System.out.print(roleDao.GetResourcesByRoleId(1));*/
-        User u= userDao.login("eason", "57eb72e6b78a87a12d46a7f5e9315138");
-      System.out.print(u);
+       /* User u= userDao.login("eason");
+        System.out.print(u);*/
+
+        String sta=  new Md5Hash("1qazXSW@","2016-06-16 11:15:33").toString();
+        System.out.print(sta);
     }
 
+    @Test
+    public  void  patten(){
+        PatternMatcher patternMatcher
+                = new AntPathMatcher();
+        String adminUrl="/user/**";
+        String thisUrl="/user/login";
+        boolean macth = patternMatcher.matches(adminUrl, thisUrl);
+        System.out.print(macth);
+    }
 
 }

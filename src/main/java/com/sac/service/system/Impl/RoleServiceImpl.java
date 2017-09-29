@@ -18,7 +18,7 @@ public class RoleServiceImpl implements RoleService {
     RoleDao roleDao;
 
     @Override
-    public List<String> GetResourcesByRoleId(int roleId) {
-        return roleDao.GetResourcesByRoleId(roleId);
+    public List<String> GetResourcesByRoleId(String roleName) {
+        return roleDao.GetResourcesByRoleId(roleName);
     }
 }

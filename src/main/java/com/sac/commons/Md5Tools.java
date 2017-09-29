@@ -9,7 +9,7 @@ public class Md5Tools {
 
     public  static String  GetMd5(String str,String pwd,String salt,int
                                   count){
-        SimpleHash simpleHash=new SimpleHash(str,pwd,salt,count);
+   SimpleHash simpleHash=new SimpleHash(str,pwd,salt,count);
         return  simpleHash.toString();
     }
 }
