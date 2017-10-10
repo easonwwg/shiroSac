@@ -1,5 +1,7 @@
 package com.sac.pojo.system;
 
+import java.util.List;
+
 /**
  * Created by EAISON on 2017/10/10.
  */
@@ -12,6 +14,7 @@ public class Menu {
     private  String parentCode;
     private  String icon;
     private  boolean isDeleted;
+    private List<Menu> childMenus;
 
     public int getMenuId() {
         return menuId;
@@ -73,7 +76,15 @@ public class Menu {
         return isDeleted;
     }
 
-    public void setIsDeleted(boolean isDeleted) {
-        this.isDeleted = isDeleted;
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public List<Menu> getChildMenus() {
+        return childMenus;
+    }
+
+    public void setChildMenus(List<Menu> childMenus) {
+        this.childMenus = childMenus;
     }
 }
