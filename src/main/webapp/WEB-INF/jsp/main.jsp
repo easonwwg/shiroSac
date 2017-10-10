@@ -134,6 +134,18 @@
                             <a href="user/index1">
                                 用户管理
                             </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="user/index1">
+                                        用户添加
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="user/index1">
+                                        用户删除
+                                    </a>
+                                </li>
+                                </ul>
                         </li>
                         <li>
                             <a href="javascript:;">
@@ -150,7 +162,7 @@
 
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-user-circle" aria-hidden="true"></i><span class="title"> 个人中心 </span><span
+                        <i class="fa fa-user-circle"></i><span class="title"> 个人中心 </span><span
                             class="arrow "> </span>
                     </a>
                     <ul class="sub-menu">

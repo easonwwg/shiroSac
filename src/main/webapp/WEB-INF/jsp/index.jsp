@@ -11,7 +11,7 @@
     <title></title>
 </head>
 <body>
-<div style="align-content: center; background-color: #008800;width: 80%;height:400px;">
+<div style="align-content: center; background-color: #008800;width: 100%;height:400px;">
   Hello World
 </div>
 </body>
