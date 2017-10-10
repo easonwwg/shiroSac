@@ -30,6 +30,27 @@ public class LoginController {
 
 
     /**
+     * 测试页面1
+     *
+     * @return
+     */
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String toIndex() {
+        return "index";
+    }
+
+    /**
+     * 测试页面2
+     *
+     * @return
+     */
+    @RequestMapping(value = "/index1", method = RequestMethod.GET)
+    public String toIndex1() {
+        return "index1";
+    }
+
+
+    /**
      * 跳转到登陆页面
      *
      * @return

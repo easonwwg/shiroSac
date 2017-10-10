@@ -7,10 +7,6 @@
 --%>
 <%@include file="/resources/common/basePath.jsp"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
-<%--<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>--%>
-
 <%--<%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -53,15 +49,15 @@
 </head>
 <!-- END HEAD -->
 
-<!-- BEGIN BODY -->
+<!--body开始 -->
 <body class="page-header-fixed">
-<!-- BEGIN HEADER -->
+<!--header开始 -->
 <div class="header navbar navbar-inverse navbar-fixed-top">
     <!-- BEGIN TOP NAVIGATION BAR -->
     <div class="header-inner">
         <!-- BEGIN LOGO -->
         <a class="navbar-brand" href="javascript:;">
-            <img src="/resources/assets/img/logo.png" alt="logo" class="img-responsive" />
+            <img src="/resources/assets/img/logo.jpg" alt="logo" class="img-responsive" />
         </a>
         <!-- END LOGO -->
         <!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -75,7 +71,8 @@
             <li class="dropdown user">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                     <img alt="" src="/resources/assets/img/avatar1_small.jpg"/>
-                    <span class="username"> ${userInfo.username } </span>
+                    <!--用户名-->
+                    <span class="username"><shiro:principal property="nickName"/> </span>
                     <i class="fa fa-angle-down"></i>
                 </a>
                 <ul class="dropdown-menu">
@@ -102,14 +99,14 @@
     </div>
     <!-- END TOP NAVIGATION BAR -->
 </div>
-<!-- END HEADER -->
+<!-- header结束 -->
 <div class="clearfix"></div>
-<!-- BEGIN CONTAINER -->
+<!-- container开始 -->
 <div class="page-container">
-    <!-- BEGIN SIDEBAR -->
+    <!-- 侧边栏开始 -->
     <div class="page-sidebar-wrapper">
         <div class="page-sidebar navbar-collapse collapse">
-            <!-- BEGIN SIDEBAR MENU -->
+            <!-- 侧边栏菜单按钮开始 -->
             <ul class="page-sidebar-menu" id="page-sidebar-menu">
                 <li class="sidebar-toggler-wrapper">
                     <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
@@ -119,7 +116,7 @@
 
                 <li class="start active">
                     <!--跳转到控制器的地址-->
-                    <a href="rest/page/dashboard" id="btn-dashboard">
+                    <a href="user/index" id="btn-dashboard">
                         <i class="fa fa-home"></i><span class="title"> 首页 </span><span
                             class="selected"> </span>
                     </a>
@@ -134,7 +131,7 @@
                     <ul class="sub-menu">
                         <!--跳转到控制器的地址-->
                         <li>
-                            <a href="javascript:;">
+                            <a href="user/index1">
                                 用户管理
                             </a>
                         </li>
@@ -153,7 +150,7 @@
 
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-user"></i><span class="title"> 个人中心 </span><span
+                        <i class="fa fa-user-circle" aria-hidden="true"></i><span class="title"> 个人中心 </span><span
                             class="arrow "> </span>
                     </a>
                     <ul class="sub-menu">
@@ -169,21 +166,21 @@
                         </li>
 
                         <!-- 测试权限控制 -->
-                        <shiro:hasAnyRoles name="super_admin">
+                        <shiro:hasAnyRoles name="admin">
                             <li>
                                 <a href="javascript:;">super_admin 拥有此角色</a>
                             </li>
                         </shiro:hasAnyRoles>
 
-                        <shiro:hasPermission name="user:create">
+                        <shiro:hasPermission name="/user/create">
                             <li>
-                                <a href="javascript:;">user:create 拥有此权限</a>
+                                <a href="javascript:;">/user/create 拥有此权限</a>
                             </li>
                         </shiro:hasPermission>
 
-                        <shiro:hasPermission name="user:update">
+                        <shiro:hasPermission name="/user/update">
                             <li>
-                                <a href="javascript:;">user:update 拥有此权限</a>
+                                <a href="javascript:;">/user/update 拥有此权限</a>
                             </li>
                         </shiro:hasPermission>
 
@@ -191,11 +188,11 @@
                 </li>
 
             </ul>
-            <!-- END SIDEBAR MENU -->
+            <!-- 侧边栏菜单按钮结束 -->
         </div>
     </div>
-    <!-- END SIDEBAR -->
-    <!-- BEGIN CONTENT -->
+    <!-- 侧边栏结束 -->
+    <!-- 主体开始 -->
     <div class="page-content-wrapper">
         <div class="page-content">
             <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
@@ -304,24 +301,25 @@
             </div>
             <!-- END PAGE HEADER-->
 
-            <!-- BEGIN DASHBOARD STATS -->
+            <!-- 页面主体 -->
             <div id="main-content"></div>
 
-            <!-- END PORTLET-->
+            <!-- 页面主体-->
         </div>
     </div>
-    <!-- END CONTENT -->
+    <!-- 主体结束 -->
 </div>
-<!-- END CONTAINER -->
-<!-- BEGIN FOOTER -->
+<!-- container结束 -->
+<!-- footer开始 -->
 <div class="footer">
     <div class="footer-inner">
-        2014 &copy; Quick4j By Eliteams.
+        2017-2018 &copy; sac By eason.
     </div>
     <div class="footer-tools">
         <span class="go-top"><i class="fa fa-angle-up"></i></span>
     </div>
 </div>
+<!-- footer结束-->
 <!--[if lt IE 9]>
 <script src="/resources/assets/plugins/respond.min.js"></script>
 <script src="/resources/assets/plugins/excanvas.min.js"></script>
