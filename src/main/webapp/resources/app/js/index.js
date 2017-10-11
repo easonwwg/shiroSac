@@ -41,4 +41,10 @@ $(function() {
     Index.init();
     //触发首页的事件
     $('#btn-dashboard').trigger("click");
+
+    //js获取菜单
+    $.get("http://localhost:8081/menus/getMenus", function(result){
+      //  $("div").html(result);
+        alert(result);
+    });
 });

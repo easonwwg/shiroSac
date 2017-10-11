@@ -114,6 +114,7 @@
                     <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
                 </li>
 
+                <!--这个暂时是不变的-->
                 <li class="start active">
                     <!--跳转到控制器的地址-->
                     <a href="user/index" id="btn-dashboard">
@@ -122,7 +123,10 @@
                     </a>
                 </li>
 
-                <li class="">
+                <!--下面的动态生成 js获取后台数据-->
+
+
+            <%--  <li class="">
                     <!--跳转到控制器的地址-->
                     <a href="javascript:;">
                         <i class="fa fa-gears"></i><span class="title"> 系统管理 </span><span
@@ -162,7 +166,8 @@
 
                 <li class="">
                     <a href="javascript:;">
-                        <i class="fa fa-user-circle"></i><span class="title"> 个人中心 </span><span
+                        <i class="fa fa-user-circle"></i>
+                        <span class="title"> 个人中心 </span><span
                             class="arrow "> </span>
                     </a>
                     <ul class="sub-menu">
@@ -197,7 +202,7 @@
                         </shiro:hasPermission>
 
                     </ul>
-                </li>
+                </li>--%>
 
             </ul>
             <!-- 侧边栏菜单按钮结束 -->

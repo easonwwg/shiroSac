@@ -17,14 +17,69 @@ public class MenuServiceImpl implements MenuService {
     @Autowired
     MenuDao menuDao;
 
+
+
     @Override
-    public Menu GetMenuList() {
+    public String GetMenuList() {
+        StringBuilder sb = new StringBuilder();
         List<Menu> rootMenus= menuDao.GetMenuList();
         //找到父节点
         Menu menu=rootMenus.stream().filter(s->s.getParentCode().equals("0")).findFirst().get();
         //开始递归遍历
         menu.setChildMenus(getChild(menu.getCode(), rootMenus));
-        return menu;
+        //生成html页面标签
+        List<Menu> menus=  menu.getChildMenus();
+        GetMenuHtml(menus,sb);
+        return sb.toString();
+    }
+
+    private void GetMenuHtml( List<Menu> menus,StringBuilder sb) {
+        if (menus.size()==0){
+            return;
+        }
+        for (int i=0;i<menus.size();i++){
+            Menu menu=menus.get(i);
+            //说明还有子节点
+            if (menu.getMenuUrl()==null){
+                if (menu.getChildMenus()!=null){
+                    sb.append("<li>");
+                    sb.append(GetHrefTag(menu));
+                    sb.append(" <ul class=\"sub-menu\">");
+                    List<Menu> itemMenus=menu.getChildMenus();
+                    GetMenuHtml(itemMenus,sb);
+                    sb.append("</ul>");
+                    sb.append("</li>");
+                }
+                else {
+                    sb.append("<li>");
+                    // sb.append(GetLiStr(menu));
+                    sb.append(GetHrefTag(menu));
+                    sb.append("</li>");
+                }
+            }
+            else {
+                sb.append("<li>");
+                sb.append(GetHrefTag(menu));
+                //sb.append(GetLiStr(menu));
+                sb.append("</li>");
+            }
+        }
+
+    }
+
+     private String GetHrefTag(Menu menu){
+        StringBuilder sb=new StringBuilder();
+        if (menu.getMenuUrl()==null){
+            sb.append(" <a href=\"javascript:;\"> ");
+        }
+        else {
+            sb.append(" <a href="+menu.getMenuUrl()+"> ");
+        }
+        sb.append("  <i class=\""+menu.getIcon()+"\"></i>");
+        sb.append("<span class=\"title\"> "+menu.getMenuName()+" </span>");
+        sb.append("<span  class=\"arrow \"> </span>");
+        sb.append("  </a>");
+        return sb.toString();
     }
 
     private List<Menu> getChild(String code,List<Menu> rootMenu){

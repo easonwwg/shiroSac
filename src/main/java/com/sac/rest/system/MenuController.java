@@ -1,6 +1,5 @@
 package com.sac.rest.system;
 
-import com.sac.pojo.system.Menu;
 import com.sac.service.system.Interface.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,8 @@ public class MenuController {
 
     @RequestMapping(method = RequestMethod.GET,value = "/getMenus")
     @ResponseBody
-    private Menu GetMenuLists(){
+    private String GetMenuLists(){
+        System.out.print(menuService.GetMenuList());
         return  menuService.GetMenuList();
     }
 
