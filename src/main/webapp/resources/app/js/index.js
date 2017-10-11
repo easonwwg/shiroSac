@@ -45,6 +45,6 @@ $(function() {
     //js获取菜单
     $.get("http://localhost:8081/menus/getMenus", function(result){
       //  $("div").html(result);
-        alert(result);
+      $(".page-sidebar-menu").append(result);
     });
 });
