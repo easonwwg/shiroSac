@@ -68,7 +68,7 @@
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
 
-    <!--Filter的代理类-->
+    <!--Filter的代理类 这个是spring的，和shiro无光，在其它xml文件找和shiroFilter对应的bean实例-->
     <filter>
         <filter-name>shiroFilter</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>

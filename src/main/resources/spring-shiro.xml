@@ -46,6 +46,7 @@
                 /resources/** = anon
                 /user/error =anon
                 /favicon.ico = anon
+                /user/logout = logout
                 /** = authc , resourceCheckFilter
             </value>
         </property>

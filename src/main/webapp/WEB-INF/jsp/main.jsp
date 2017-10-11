@@ -87,8 +87,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="rest/user/logout">
-                            <i class="fa fa-key"></i> 退出
+                        <a href="/user/logout">
+                            <i class="fa fa-key"></i> 注销
                         </a>
                     </li>
                 </ul>
