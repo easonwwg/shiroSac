@@ -53,6 +53,7 @@ public class SecurityRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.setRoles(roles.stream().collect(Collectors.toSet()));
         info.setStringPermissions(resources.stream().collect(Collectors.toSet()));
+       System.out.print("sql查询");
         System.out.println("角色是------------------------"+roles);
         System.out.println("權限是------------------------"+resources);
         return info;
@@ -82,5 +83,23 @@ public class SecurityRealm extends AuthorizingRealm {
                 new SimpleAuthenticationInfo(user, user.getPswd(),
                         ByteSource.Util.bytes(salt), getName());
         return authenticationInfo;
+    }
+
+    /**
+     * 清除授权
+     * @param principals
+     */
+    @Override
+    protected void clearCachedAuthorizationInfo(PrincipalCollection principals) {
+        super.clearCachedAuthorizationInfo(principals);
+    }
+
+    /**
+     * 清除认证
+     * @param principals
+     */
+    @Override
+    protected void clearCachedAuthenticationInfo(PrincipalCollection principals) {
+        super.clearCachedAuthenticationInfo(principals);
     }
 }

@@ -16,12 +16,16 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
 
+
     @RequestMapping(method = RequestMethod.GET,value = "/getMenus")
     @ResponseBody
     private String GetMenuLists(){
-        System.out.print(menuService.GetMenuList());
         return  menuService.GetMenuList();
     }
 
 
+   /* @RequestMapping(method = RequestMethod.POST,value = "/addMenu")
+    private void AddMenu(HttpServletRequest request){
+
+    }*/
 }

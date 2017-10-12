@@ -11,7 +11,7 @@
      -->
     <bean id="sampleRealm" class="com.sac.shiro.core.SecurityRealm">
         <!-- 将自定义的权限匹配器注入到自定义 Realm 中 -->
-        <property name="permissionResolver" ref="permissionResolver"/>
+       <property name="permissionResolver" ref="permissionResolver"/>
         <!--密碼通過credentialsMatcher比對-->
         <property name="credentialsMatcher">
             <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
@@ -64,11 +64,28 @@
     <!-- AOP式方法级权限检查 -->
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
           depends-on="lifecycleBeanPostProcessor">
-        <!--  <property name="proxyTargetClass" value="true" />-->
+        <!--如需要注解开发 需要加如下内容-->
+       <!--  <property name="proxyTargetClass" value="true" />-->
     </bean>
 
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager"/>
     </bean>
 
+    <!--注解开发需要加入一下内容-->
+    <!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+              &lt;!&ndash;  &lt;!&ndash;登录&ndash;&gt;
+                <prop key="org.apache.shiro.authz.UnauthenticatedException">
+                    redirect:/login
+                </prop>
+                &lt;!&ndash;授权&ndash;&gt;
+                <prop key="org.apache.shiro.authz.UnauthorizedException">
+                    redirect:/admin/common/exceptionLog
+                </prop>&ndash;&gt;
+            </props>
+        </property>
+        <property name="defaultErrorView" value="redirect:/user/error"/>
+    </bean>-->
 </beans>

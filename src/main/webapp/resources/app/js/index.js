@@ -43,8 +43,8 @@ $(function() {
     $('#btn-dashboard').trigger("click");
 
     //js获取菜单
-    $.get("http://localhost:8081/menus/getMenus", function(result){
-      //  $("div").html(result);
-      $(".page-sidebar-menu").append(result);
+    $.get("http://localhost:8081/menus/getMenus", function(menuResult){
+       //动态添加菜单
+      $(".page-sidebar-menu").append(menuResult);
     });
 });

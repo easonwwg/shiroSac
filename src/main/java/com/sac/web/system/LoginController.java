@@ -67,6 +67,7 @@ public class LoginController {
      *
      * @return
      */
+    /*@RequiresRoles({"SuperAdmin"})*/ //注解测试
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String toMainIndex() {
         return "main";
