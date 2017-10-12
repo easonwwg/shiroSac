@@ -102,4 +102,5 @@ public class SecurityRealm extends AuthorizingRealm {
     protected void clearCachedAuthenticationInfo(PrincipalCollection principals) {
         super.clearCachedAuthenticationInfo(principals);
     }
+
 }
