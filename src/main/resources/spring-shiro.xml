@@ -3,7 +3,6 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-
     <!-- 自定义一个权限匹配器 -->
     <bean id="permissionResolver" class="com.sac.shiro.core.UrlPermissionResolver"/>
     <!-- 授权 认证
@@ -25,6 +24,7 @@
 
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="sampleRealm"/>
+        <!--配置缓存 缓存角色和权限的信息，避免每次都去查询数据库，照成数据库的压力-->
         <property name="cacheManager" ref="ehCacheManager"/>
     </bean>
 
