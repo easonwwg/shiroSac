@@ -97,9 +97,13 @@ public class LoginController {
     public String login(String userName, String passwd, Model model,
                         HttpServletRequest request) {
         Subject currentSubject = SecurityUtils.getSubject();
+        if(currentSubject.isRemembered()){
+            System.out.print("用户已经记住了我");
+        }
         //没有被认证
         if (!currentSubject.isAuthenticated()) {
             UsernamePasswordToken token = new UsernamePasswordToken(userName, passwd);
+           //  token.setRememberMe(true);
             try {
                 currentSubject.login(token);
             } catch (DisabledAccountException e) {

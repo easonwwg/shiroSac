@@ -7,7 +7,7 @@
 
 
     <!--如果是注解开发需加如下-->
-  <!--  <aop:config proxy-target-class="true" />-->
+    <aop:config proxy-target-class="true" />
 
     <!-- 组件扫描 -->
     <context:component-scan base-package="com.sac.web"/>

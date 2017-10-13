@@ -47,7 +47,8 @@
                 /user/error =anon
                 /favicon.ico = anon
                 /user/logout = logout
-                /** = authc , resourceCheckFilter
+               /** = authc , resourceCheckFilter
+              <!--  /** =user,resourceCheckFilter-->
             </value>
         </property>
     </bean>
@@ -65,7 +66,7 @@
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
           depends-on="lifecycleBeanPostProcessor">
         <!--如需要注解开发 需要加如下内容-->
-       <!--  <property name="proxyTargetClass" value="true" />-->
+       <property name="proxyTargetClass" value="true" />
     </bean>
 
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
@@ -73,19 +74,19 @@
     </bean>
 
     <!--注解开发需要加入一下内容-->
-    <!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+   <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>
-              &lt;!&ndash;  &lt;!&ndash;登录&ndash;&gt;
+          <!--    &lt;!&ndash;  &lt;!&ndash;登录&ndash;&gt;
                 <prop key="org.apache.shiro.authz.UnauthenticatedException">
                     redirect:/login
                 </prop>
                 &lt;!&ndash;授权&ndash;&gt;
                 <prop key="org.apache.shiro.authz.UnauthorizedException">
                     redirect:/admin/common/exceptionLog
-                </prop>&ndash;&gt;
+                </prop>&ndash;&gt;-->
             </props>
         </property>
         <property name="defaultErrorView" value="redirect:/user/error"/>
-    </bean>-->
+    </bean>
 </beans>
