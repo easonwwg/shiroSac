@@ -1,7 +1,4 @@
 package com.sac.web.system;
-
-import com.sac.cache.RedisBase;
-import com.sac.cache.RedisDao;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
