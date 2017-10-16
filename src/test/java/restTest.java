@@ -1,10 +1,8 @@
-import com.sac.cache.RedisBase;
 import com.sac.cache.RedisDao;
 import com.sac.dao.system.MenuDao;
 import com.sac.dao.system.RoleDao;
 import com.sac.dao.system.UserDao;
 import com.sac.pojo.system.Menu;
-import com.sac.service.business.Impl.SessionTestImpl;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.util.AntPathMatcher;
 import org.apache.shiro.util.PatternMatcher;
@@ -17,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -169,57 +168,27 @@ public class restTest {
     @Autowired
     private RedisTemplate<String,String> redisTemplate;
 
+
+    @Resource(name = "redisDao")
+    private  RedisDao redisDao;
+
+
     @Test
     public  void  redisTest(){
-        SessionTestImpl sessionTest=new SessionTestImpl(redisTemplate);
+      /*    SessionTestImpl sessionTest=new SessionTestImpl(redisTemplate);
         sessionTest.put("zhao","2222");
-        System.out.print(sessionTest.get("zhao"));
-      /* RedisBase<String,String> redisDao=new RedisDao<String,String>();
+        System.out.print(sessionTest.get("zhao"));*/
+   /*  RedisBase<String,String> redisDao=new RedisDao();
         redisDao.set("sac","qiong",1000000);
         System.out.print(redisDao.get("sac"));*/
        /*  redisTemplate.opsForValue().set("wwg","26");
         System.out.print(redisTemplate.opsForValue().get("wwg"));*/
+        redisDao.add("h1w","w1w");
+        System.out.println(redisDao.Get("h1w"));
     }
 
 }
 
-
-class RedisDao1<K,V> implements RedisBase<K,V> {
-
-    @Autowired
-    private RedisTemplate<K,V> redisTemplate;
-
-    @Override
-    public V get(K key) {
-        V value= redisTemplate.opsForValue().get(key);
-        return  value;
-    }
-
-    @Override
-    public void set(K key, V value, long offset) {
-        redisTemplate.opsForValue().set(key, value, offset);
-    }
-}
-
- interface RedisBase1<K, V> {
-
-    /**
-     * 获取value
-     * @param key
-     * @return
-     */
-    V get(K key);
-
-    /**
-     * 赋值
-     * @param key
-     * @param value
-     * @param offset 超值时间
-     */
-    void set(K key, V value,long offset);
-
-
-}
 
 
 

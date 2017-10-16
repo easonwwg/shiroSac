@@ -1,6 +1,5 @@
 package com.sac.web.system;
 
-import com.sac.service.business.Interface.SessionTest;
 import com.sac.service.system.Interface.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -119,19 +118,5 @@ public class LoginController {
         }
         //直接跳转到首页
         return "redirect:/user/main";
-    }
-
-
-
-    @Autowired
-    private SessionTest sessionTest;
-
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
-    public void list(Model model){
-        // List<Role> roleList = roleService.list();
-        // model.addAttribute("roleList",roleList);
-        sessionTest.put("zh","111");
-        String value = sessionTest.get("zh");
-        System.out.print(sessionTest.get("zh"));
     }
 }
