@@ -89,4 +89,8 @@
         </property>
         <property name="defaultErrorView" value="redirect:/user/error"/>
     </bean>
+
+
+     <!--session的会话管理-->
+
 </beans>

@@ -9,6 +9,7 @@
             classpath:spring/applicationContext-service.xml
             classpath:spring/spring-mybatis.xml
             classpath:spring-shiro.xml
+            classpath:redisconf.xml
         </param-value>
     </context-param>
     <!-- 加载Spring容器配置 默认会以 /WEB-INF/applicationContext.xml作为配置文件 -->
