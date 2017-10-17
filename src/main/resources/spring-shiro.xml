@@ -26,6 +26,8 @@
         <property name="realm" ref="sampleRealm"/>
         <!--配置缓存 缓存角色和权限的信息，避免每次都去查询数据库，照成数据库的压力-->
         <property name="cacheManager" ref="ehCacheManager"/>
+        <!--session的管理-->
+        <property name="sessionManager" ref="sessionManager"/>
     </bean>
 
     <!-- 配置 shiro 的 ehcache 缓存相关,这个缓存只和 Realm 相关 -->
@@ -92,5 +94,10 @@
 
 
      <!--session的会话管理-->
+    <bean id="sessionDAO" class="com.sac.shiro.session.ShrioSessionDao"></bean>
+
+    <bean id="sessionManager"  class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="sessionDAO" ref="sessionDAO"></property>
+    </bean>
 
 </beans>
