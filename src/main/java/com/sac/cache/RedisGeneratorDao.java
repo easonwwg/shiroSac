@@ -11,9 +11,9 @@ import java.io.Serializable;
  */
 public abstract class RedisGeneratorDao<K, V> {
     @Autowired
-    private RedisTemplate<K,V> redisTemplate ;
+    protected RedisTemplate<K,V> redisTemplate ;
 
-    protected RedisTemplate<K,V> getRedisTemplate() {
-        return this.redisTemplate;
-    }
+  //  protected RedisTemplate<K,V> getRedisTemplate() {
+       // return this.redisTemplate;
+   // }
 }

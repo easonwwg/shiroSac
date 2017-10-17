@@ -1,24 +1,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
             http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-            http://www.springframework.org/schema/tx
-            http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
-            http://www.springframework.org/schema/context
-            http://www.springframework.org/schema/context/spring-context-4.0.xsd
                ">
     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <property name="maxIdle" value="100" />
-        <property name="maxTotal" value="100" />
+        <property name="maxIdle" value="1000" />
+        <property name="maxTotal" value="1000" />
         <property name="maxWaitMillis" value="1000" />
         <property name="testOnBorrow" value="true" />
     </bean>
-   <!-- p:host-name="localhost"  p:port="6379" p:password=""
-    p:pool-config-ref="poolConfig"-->
     <bean id="connectionFactory"
           class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
         >
@@ -42,8 +33,16 @@
         </property>
     </bean>-->
 
-    <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
         <property name="connectionFactory" ref="connectionFactory" />
+      <!--  <property name="keySerializer">
+            <bean
+                class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+        </property>-->
+      <!--  <property name="valueSerializer">
+           <bean
+                class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+        </property>-->
     </bean>
 
 

@@ -18,11 +18,11 @@ public class RedisDao extends RedisGeneratorDao<String, String> {
     public void add(String key, String value) {
   /*  RedisSerializer<String> serializer = getRedisTemplate().getStringSerializer();
     getRedisTemplate().opsForValue().set(key,value);*/
-        getRedisTemplate().opsForValue().set(key, value);
+        redisTemplate.opsForValue().set(key, value);
     }
 
     public String Get(String key) {
-        return getRedisTemplate().opsForValue().get(key);
+        return redisTemplate.opsForValue().get(key);
        /* return   getRedisTemplate().opsForValue().get(key);*/
     }
 

@@ -1,4 +1,6 @@
 import com.sac.cache.RedisDao;
+import com.sac.cache.RedisManager;
+import com.sac.commons.SerializerUtil;
 import com.sac.dao.system.MenuDao;
 import com.sac.dao.system.RoleDao;
 import com.sac.dao.system.UserDao;
@@ -172,9 +174,18 @@ public class restTest {
     @Resource(name = "redisDao")
     private  RedisDao redisDao;
 
+@Resource(name = "redisManager")
+private  RedisManager redisManager;
 
     @Test
     public  void  redisTest(){
+    String test="test";
+    String testValue="ssss";
+      redisManager.set(test,testValue);
+        System.out.print((String) redisManager.get(test));
+        redisManager.del(test);
+        System.out.print("删除后"+(String) redisManager.get(test));
+
       /*    SessionTestImpl sessionTest=new SessionTestImpl(redisTemplate);
         sessionTest.put("zhao","2222");
         System.out.print(sessionTest.get("zhao"));*/
@@ -183,8 +194,8 @@ public class restTest {
         System.out.print(redisDao.get("sac"));*/
        /*  redisTemplate.opsForValue().set("wwg","26");
         System.out.print(redisTemplate.opsForValue().get("wwg"));*/
-        redisDao.add("h1w","w1w");
-        System.out.println(redisDao.Get("h1w"));
+       /* redisDao.add("h1w","w1w");
+        System.out.println(redisDao.Get("h1w"));*/
     }
 
 }
