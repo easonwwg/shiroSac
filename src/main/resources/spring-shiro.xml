@@ -25,9 +25,22 @@
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="sampleRealm"/>
         <!--配置缓存 缓存角色和权限的信息，避免每次都去查询数据库，照成数据库的压力-->
-        <property name="cacheManager" ref="ehCacheManager"/>
+       <!-- <property name="cacheManager" ref="ehCacheManager"/>-->
         <!--session的管理-->
-       <property name="sessionManager" ref="sessionManager"/>
+      <property name="cacheManager" ref="customShiroCacheManager"/>
+       <!-- <property name="sessionManager" ref="sessionManager"/>-->
+    </bean>
+
+    <!--自定义cacheManager-->
+    <bean id="customShiroCacheManager" class="com.sac.shiro.cache.CustomShiroCacheManager">
+        <property name="shiroCacheManager" ref="jedisShiroCacheManager"/>
+    </bean>
+    <bean id="jedisShiroCacheManager" class="com.sac.shiro.cache.JedisShiroCacheManager">
+        <property name="jedisManager" ref="jedisManager"/>
+    </bean>
+    <!-- redis 的缓存 -->
+   <bean id="jedisManager" class="com.sac.shiro.cache.JedisManager">
+        <property name="jedisPool" ref="jedisPool"/>
     </bean>
 
     <!-- 配置 shiro 的 ehcache 缓存相关,这个缓存只和 Realm 相关 -->
@@ -93,11 +106,24 @@
     </bean>
 
 
+
+
      <!--session的会话管理-->
+
+    <!--全局会话坚监听-->
+    <bean id="customSessionListener" class="com.sac.shiro.session.CustomSessionListener"/>
+
+
     <bean id="sessionDAO" class="com.sac.shiro.session.ShrioSessionDao"></bean>
 
     <bean id="sessionManager"  class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
         <property name="sessionDAO" ref="sessionDAO"></property>
+         <property name="sessionListeners">
+             <list>
+                 <ref bean="customSessionListener"></ref>
+             </list>
+         </property>
+
     </bean>
 
 </beans>

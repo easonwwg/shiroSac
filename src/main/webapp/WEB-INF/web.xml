@@ -6,10 +6,11 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:redisconf.xml
+           <!-- classpath:redisconf.xml-->
             classpath:spring/applicationContext-service.xml
             classpath:spring/spring-mybatis.xml
             classpath:spring-shiro.xml
+            classpath:spring-cache.xml
         </param-value>
     </context-param>
     <!-- 加载Spring容器配置 默认会以 /WEB-INF/applicationContext.xml作为配置文件 -->

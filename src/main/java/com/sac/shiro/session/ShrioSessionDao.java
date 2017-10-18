@@ -5,9 +5,7 @@ import com.sac.commons.SerializerUtil;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.UnknownSessionException;
 import org.apache.shiro.session.mgt.eis.AbstractSessionDAO;
-import org.apache.shiro.session.mgt.eis.CachingSessionDAO;
 
-import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
@@ -19,7 +17,7 @@ import java.util.Set;
  */
 public class ShrioSessionDao  extends AbstractSessionDAO{
 
-    @Resource(name = "redisManager")
+   // @Resource(name = "redisManager")
     private  RedisManager redisManager;
 
     /**

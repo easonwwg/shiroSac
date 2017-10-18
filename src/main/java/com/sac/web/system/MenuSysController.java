@@ -1,6 +1,5 @@
 package com.sac.web.system;
 import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +24,7 @@ public class MenuSysController {
     }
 
 
-    @Autowired
+   // @Autowired
     private RedisTemplate<String,String> redisTemplate;
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test() {

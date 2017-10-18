@@ -1,24 +1,23 @@
 package com.sac.cache;
 
-import java.io.Serializable;
-import java.util.Set;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.sac.commons.SerializerUtil;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
-import  com.sac.commons.SerializerUtil;
-import org.springframework.stereotype.Repository;
+
+import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by 99079 on 2017/10/17.
  */
 
-@Repository(value = "redisManager")
+//@Repository(value = "redisManager")
 public class RedisManager {
 
 
-    @Autowired
+   // @Autowired
    private RedisTemplate<Serializable,Serializable> redisTemplate;
 
     /**

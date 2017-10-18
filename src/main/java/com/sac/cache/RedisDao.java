@@ -1,12 +1,10 @@
 package com.sac.cache;
 
-import org.springframework.stereotype.Repository;
-
 /**
  * Created by EAISON on 2017/10/16.
  */
 
-@Repository(value = "redisDao")
+//@Repository(value = "redisDao")
 public class RedisDao extends RedisGeneratorDao<String, String> {
 
     /**
