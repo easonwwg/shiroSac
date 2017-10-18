@@ -31,7 +31,7 @@ public class CustomShiroCacheManager implements CacheManager, Destroyable {
      */
     @Override
     public <K, V> Cache<K, V> getCache(String name) throws CacheException {
-        System.out.println(name);
+        System.out.println("要获取到缓存的key是-------"+name);
         return getShiroCacheManager().getCache(name);
     }
 

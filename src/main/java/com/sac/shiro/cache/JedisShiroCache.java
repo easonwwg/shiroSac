@@ -72,6 +72,7 @@ public class JedisShiroCache<K,V>  implements Cache<K, V> {
         } catch (Exception e) {
            // LoggerUtils.error(SELF, "get value by cache throw exception",e);
         }
+        System.out.println("获取的缓存结果是"+(V) SerializeUtil.deserialize(byteValue));
         return (V) SerializeUtil.deserialize(byteValue);
     }
 
