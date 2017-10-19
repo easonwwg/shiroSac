@@ -4,7 +4,7 @@ import org.apache.shiro.cache.Cache;
 
 /**
  * 此接口为自定义cacheManager返回cache对象
- * 具体的实现类是JedisCacheManager
+ * 具体的实现类是JedisShiroCacheManager
  * Created by EAISON on 2017/10/18.
  */
 public interface ShiroCacheManager {

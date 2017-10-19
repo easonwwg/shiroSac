@@ -24,7 +24,6 @@ public class SecurityRealm extends AuthorizingRealm {
 
     private static final Logger logger = LoggerFactory.getLogger(SecurityRealm.class);
 
-
     @Autowired
     UserService userService;
 
