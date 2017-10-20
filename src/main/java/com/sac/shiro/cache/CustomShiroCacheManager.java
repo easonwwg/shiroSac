@@ -37,6 +37,7 @@ public class CustomShiroCacheManager implements CacheManager, Destroyable {
 
     @Override
     public void destroy() throws Exception {
-        shiroCacheManager.destroy();
+        System.out.println("cacheManager清楚缓存");
+        //shiroCacheManager.destroy();
     }
 }

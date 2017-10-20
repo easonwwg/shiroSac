@@ -70,7 +70,7 @@ public class JedisShiroCache<K,V>  implements Cache<K, V> {
         try {
             byteValue = jedisManager.getValueByKey(DB_INDEX, byteKey);
         } catch (Exception e) {
-           // LoggerUtils.error(SELF, "get value by cache throw exception",e);
+          System.out.println("获取值失败");
         }
         System.out.println("获取的缓存结果是"+(V) SerializeUtil.deserialize(byteValue));
         return (V) SerializeUtil.deserialize(byteValue);
@@ -86,14 +86,14 @@ public class JedisShiroCache<K,V>  implements Cache<K, V> {
     @Override
     public V put(K key, V value) throws CacheException {
         System.out.println("保存的key是"+key);
-        V previos = get(key);
+       // V previos = get(key);
         try {
             jedisManager.saveValueByKey(DB_INDEX, SerializeUtil.serialize(buildCacheKey(key)),
                     SerializeUtil.serialize(value), -1);
         } catch (Exception e) {
-            //LoggerUtils.error(SELF, "put cache throw exception",e);
+            System.out.println("保存值失败");
         }
-        return previos;
+        return null;
     }
 
     /**
@@ -104,13 +104,15 @@ public class JedisShiroCache<K,V>  implements Cache<K, V> {
      */
     @Override
     public V remove(K key) throws CacheException {
-        V previos = get(key);
+        System.out.println("删除缓存key是—"+key);
+        //V previos = get(key);
         try {
             jedisManager.deleteByKey(DB_INDEX, SerializeUtil.serialize(buildCacheKey(key)));
         } catch (Exception e) {
+            System.out.println("删除值失败");
             //LoggerUtils.error(SELF, "remove cache  throw exception",e);
         }
-        return previos;
+        return null;
     }
 
     @Override

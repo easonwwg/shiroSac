@@ -23,6 +23,7 @@ public class JedisManager {
     public Jedis getJedis() {
         Jedis jedis = null;
         try {
+            JedisPool testJedisPool=jedisPool;
             jedis = getJedisPool().getResource();
         } catch (JedisConnectionException e) {
             String message = StringUtils.trim(e.getMessage());

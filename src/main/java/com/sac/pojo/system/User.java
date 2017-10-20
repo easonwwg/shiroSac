@@ -100,6 +100,10 @@ public class User implements Serializable {
         this.status = status;
     }
 
+    /**
+     * 这里的toString()方法是用户缓存的key
+     * @return
+     */
     @Override
     public String toString() {
         return getNickName()+"-"+getEmail();

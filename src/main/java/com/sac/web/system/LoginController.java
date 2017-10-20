@@ -5,6 +5,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.DisabledAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -106,6 +107,9 @@ public class LoginController {
            //  token.setRememberMe(true);
             try {
                 currentSubject.login(token);
+                PrincipalCollection principalCollection=
+                        SecurityUtils.getSubject().getPrincipals();
+                int a=0;
             } catch (DisabledAccountException e) {
                 model.addAttribute("errormsg", e.getMessage());
                 return "login";

@@ -32,7 +32,6 @@ public class SecurityRealm extends AuthorizingRealm {
 
     /**
      * 授权
-     *
      * @param principalCollection
      * @return
      */
@@ -90,6 +89,7 @@ public class SecurityRealm extends AuthorizingRealm {
      */
     @Override
     protected void clearCachedAuthorizationInfo(PrincipalCollection principals) {
+        System.out.println("realm清楚授权");
         super.clearCachedAuthorizationInfo(principals);
     }
 
@@ -99,6 +99,7 @@ public class SecurityRealm extends AuthorizingRealm {
      */
     @Override
     protected void clearCachedAuthenticationInfo(PrincipalCollection principals) {
+        System.out.println("realm清楚认证");
         super.clearCachedAuthenticationInfo(principals);
     }
 
