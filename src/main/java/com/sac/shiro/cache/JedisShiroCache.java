@@ -98,6 +98,8 @@ public class JedisShiroCache<K,V>  implements Cache<K, V> {
 
     /**
      * 删除 根据key
+     * 每一次用户注销会调用shiro的cache的remove方法
+     * 这里自定义实现，将用户的缓存从redis删除
      * @param key
      * @return
      * @throws CacheException
