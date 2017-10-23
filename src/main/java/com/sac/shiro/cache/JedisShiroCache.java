@@ -32,6 +32,8 @@ public class JedisShiroCache<K,V>  implements Cache<K, V> {
      */
     private static final int DB_INDEX = 2;
 
+    private  int expireSeconds=60;
+
     /**
      * 构造函数
      * @param name
@@ -69,6 +71,8 @@ public class JedisShiroCache<K,V>  implements Cache<K, V> {
         byte[] byteValue = new byte[0];
         try {
             byteValue = jedisManager.getValueByKey(DB_INDEX, byteKey);
+            //在保存用户的信息到redis
+            jedisManager.saveValueByKey(DB_INDEX, SerializeUtil.serialize(buildCacheKey(key)),byteValue, expireSeconds);
         } catch (Exception e) {
           System.out.println("获取值失败");
         }
@@ -88,8 +92,9 @@ public class JedisShiroCache<K,V>  implements Cache<K, V> {
         System.out.println("保存的key是"+key);
        // V previos = get(key);
         try {
+            byte[]  bs=  SerializeUtil.serialize(value);
             jedisManager.saveValueByKey(DB_INDEX, SerializeUtil.serialize(buildCacheKey(key)),
-                    SerializeUtil.serialize(value), -1);
+                    SerializeUtil.serialize(value), expireSeconds);
         } catch (Exception e) {
             System.out.println("保存值失败");
         }

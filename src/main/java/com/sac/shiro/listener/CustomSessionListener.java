@@ -52,7 +52,7 @@ public class CustomSessionListener implements SessionListener {
         //这里的两个sessionid是一样的 可以借此做一些其它的操作
         Serializable serializable= session.getId();
         Serializable serializable1=   SecurityUtils.getSubject().getSession().getId();
-        // Object obj=  SecurityUtils.getSubject().getPrincipal();
+        // Object obj=  SecurityUtils.getSubject().getPrincipal();这个会死循环
         SessionCache sessionCache=new SessionCache();
         PrincipalCollection principalCollection=sessionCache.getMyMap(serializable);
         System.out.println("会话结束"+serializable);
