@@ -1,6 +1,8 @@
 package com.sac.web.system;
 
 import com.sac.service.system.Interface.UserService;
+import com.sac.shiro.cache.SessionCache;
+import com.sac.shiro.listener.OnlineServiceMemImpl;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.DisabledAccountException;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 
 /**
  * Created by EAISON on 2017/9/28.
@@ -109,7 +112,11 @@ public class LoginController {
                 currentSubject.login(token);
                 PrincipalCollection principalCollection=
                         SecurityUtils.getSubject().getPrincipals();
-                int a=0;
+                Serializable serializable= SecurityUtils.getSubject().getSession().getId();
+                System.out.println("用户登陆时候的sessionId是"+serializable);
+                SessionCache sessionCache=new SessionCache();
+                sessionCache.setMyMap(serializable,principalCollection);
+               // int a=0;
             } catch (DisabledAccountException e) {
                 model.addAttribute("errormsg", e.getMessage());
                 return "login";
