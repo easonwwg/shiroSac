@@ -1,5 +1,6 @@
 package com.sac.shiro.filter;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.web.filter.AccessControlFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,14 +27,25 @@ public class ResourceCheckFilter extends AccessControlFilter {
         this.errorUrl = errorUrl;
     }
 
+    /**
+     * 验证每一个资源的权限
+     * @param servletRequest
+     * @param servletResponse
+     * @param o
+     * @return
+     * @throws Exception
+     */
     @Override
     protected boolean isAccessAllowed(ServletRequest servletRequest, ServletResponse servletResponse, Object o) throws Exception {
+        System.out.println("---------------------------进入到第一个过滤器判断权限开始");
         org.apache.shiro.subject.Subject subject
                 = getSubject(servletRequest, servletResponse);
         String url = getPathWithinApplication(servletRequest);
         logger.debug("进入到了访问权限认证--当前用户正在访问的 url => " + url);
-        boolean isPermitted=subject.isPermitted(url);
-        return isPermitted;
+        boolean isPermitted=subject.isPermitted(url);//这个方法会不断的将url与用户的权限进行匹配
+        System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLLL-----严重结果是"+isPermitted);
+        System.out.println("---------------------------进入到第一个过滤器判断权限结束");
+       return isPermitted;
     }
 
     @Override

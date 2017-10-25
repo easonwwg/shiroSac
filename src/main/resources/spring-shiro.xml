@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 自定义一个权限匹配器 -->
     <bean id="permissionResolver" class="com.sac.shiro.core.UrlPermissionResolver"/>
+
+    <bean id="kictOut" class="com.sac.shiro.filter.KickoutSessionFilter"></bean>
     <!-- 授权 认证
      自定义
      -->
@@ -64,10 +67,15 @@
                 /user/error =anon
                 /favicon.ico = anon
                 /user/logout = logout
-               /** = authc , resourceCheckFilter
+               /** = authc , resourceCheckFilter ,kictOut
               <!--  /** =user,resourceCheckFilter-->
             </value>
         </property>
+       <!-- <property name="filters">
+            <map>
+                <entry key="kickCheck" value-ref="kictOut"></entry>
+            </map>
+        </property>-->
     </bean>
 
     <!-- 声明一个自定义的过滤器 -->

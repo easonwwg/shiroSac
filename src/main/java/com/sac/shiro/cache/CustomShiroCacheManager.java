@@ -1,5 +1,6 @@
 package com.sac.shiro.cache;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;
@@ -38,6 +39,7 @@ public class CustomShiroCacheManager implements CacheManager, Destroyable {
     @Override
     public void destroy() throws Exception {
         System.out.println("cacheManager清楚缓存");
+        //SecurityUtils.getSubject().getSession().stop();
         //shiroCacheManager.destroy();
     }
 }

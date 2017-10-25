@@ -14,7 +14,7 @@ public class SessionCache {
     /**
      * 线程安全 存放的是用户的session和shiro缓存key的值
      */
-    private  static   Map<Serializable,PrincipalCollection> myMap = new ConcurrentHashMap<Serializable,PrincipalCollection>();
+    private    static   Map<Serializable,PrincipalCollection> myMap = new ConcurrentHashMap<Serializable,PrincipalCollection>();
 
     public PrincipalCollection getMyMap(Serializable Serializable) {
         return myMap.get(Serializable);
@@ -23,4 +23,9 @@ public class SessionCache {
     public void setMyMap(Serializable serializable,PrincipalCollection principalCollection) {
        myMap.put(serializable,principalCollection);
     }
+
+    public  Map<Serializable,PrincipalCollection> GetSessionCache(){
+        return myMap;
+    }
+
 }

@@ -38,9 +38,13 @@ public class LoginController {
      *
      * @return
      */
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String toIndex() {
-        return "index";
+      //  Serializable beforeSerializable=   SecurityUtils.getSubject().getSession().getId();
+      //  SecurityUtils.getSubject().getSession().stop();
+
+      //  Serializable afterSerializable=   SecurityUtils.getSubject().getSession().getId();
+        return "add";
     }
 
     /**
@@ -48,9 +52,10 @@ public class LoginController {
      *
      * @return
      */
-    @RequestMapping(value = "/index1", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String toIndex1() {
-        return "index1";
+      //  SecurityUtils.getSubject().getSession().stop();
+        return "delete";
     }
 
 
