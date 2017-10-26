@@ -37,14 +37,14 @@ $(function() {
         };
         return me;
     })();
-
-    Index.init();
-    //触发首页的事件
-    $('#btn-dashboard').trigger("click");
-
     //js获取菜单
     $.get("http://localhost:8081/menus/getMenus", function(menuResult){
-       //动态添加菜单
-      $(".page-sidebar-menu").append(menuResult);
+        //动态添加菜单
+        $(".page-sidebar-menu").append(menuResult);
+        //先獲取菜單才能給dom元素綁定事件
+        Index.init();
+        //触发首页的事件
+        $('#btn-dashboard').trigger("click");
+
     });
 });

@@ -2,7 +2,6 @@ package com.sac.web.system;
 
 import com.sac.service.system.Interface.UserService;
 import com.sac.shiro.cache.SessionCache;
-import com.sac.shiro.listener.OnlineServiceMemImpl;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.DisabledAccountException;
@@ -32,9 +31,19 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 刪除用戶
+     *
+     * @return
+     */
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String index() {
+        //  SecurityUtils.getSubject().getSession().stop();
+        return "index";
+    }
 
     /**
-     * 测试页面1
+     * 新增用戶
      *
      * @return
      */
@@ -48,7 +57,7 @@ public class LoginController {
     }
 
     /**
-     * 测试页面2
+     * 刪除用戶
      *
      * @return
      */

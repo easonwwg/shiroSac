@@ -123,10 +123,11 @@
                     </a>
                 </li>
 
+
                 <!--下面的动态生成 js获取后台数据-->
 
 
-            <%--  <li class="">
+         <%--   <li class="">
                     <!--跳转到控制器的地址-->
                     <a href="javascript:;">
                         <i class="fa fa-gears"></i><span class="title"> 系统管理 </span><span
@@ -135,17 +136,17 @@
                     <ul class="sub-menu">
                         <!--跳转到控制器的地址-->
                         <li>
-                            <a href="user/index1">
+                            <a href="user/delete">
                                 用户管理
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="user/index1">
+                                    <a href="user/add">
                                         用户添加
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="user/index1">
+                                    <a href="user/delete">
                                         用户删除
                                     </a>
                                 </li>
