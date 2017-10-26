@@ -124,6 +124,7 @@
 -->
 
     <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.MemorySessionDAO"></bean>
+    <!--这个暂时没有用到-->
     <bean id="sessionListener" class="com.sac.shiro.listener.OnlineServiceMemImpl"/>
     <bean id="customSessionListener" class="com.sac.shiro.listener.CustomSessionListener">
         <property name="sessionDAO" ref="sessionDAO"/>

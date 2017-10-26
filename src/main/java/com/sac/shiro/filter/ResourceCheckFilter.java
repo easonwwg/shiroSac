@@ -37,6 +37,11 @@ public class ResourceCheckFilter extends AccessControlFilter {
      */
     @Override
     protected boolean isAccessAllowed(ServletRequest servletRequest, ServletResponse servletResponse, Object o) throws Exception {
+
+        if (null==SecurityUtils.getSubject().getSession()){
+            System.out.println("——————————————————————此次请求的session为空");
+        }
+
         System.out.println("---------------------------进入到第一个过滤器判断权限开始");
         org.apache.shiro.subject.Subject subject
                 = getSubject(servletRequest, servletResponse);

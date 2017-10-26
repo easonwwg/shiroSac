@@ -55,6 +55,7 @@ public class CustomSessionListener implements SessionListener {
         // Object obj=  SecurityUtils.getSubject().getPrincipal();这个会死循环
         SessionCache sessionCache=new SessionCache();
         PrincipalCollection principalCollection=sessionCache.getMyMap(serializable);
+        //会话结束删除对应存放session-principalCollection的字典集合
         sessionCache.GetSessionCache().remove(serializable);
         System.out.println("会话结束"+serializable);
         System.out.println("会话结束"+principalCollection);
