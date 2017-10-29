@@ -29,6 +29,13 @@
     <meta content="" name="author" />
     <meta name="MobileOptimized" content="320">
 
+    <!--登陆页的css-->
+    <link rel='stylesheet' href="<%=basePath%>/resources/css/login/googleeapis.css">
+    <link rel="stylesheet" href="<%=basePath%>/resources/css/login/reset.css">
+    <link rel="stylesheet" href="<%=basePath%>/resources/css/login/supersized.css">
+    <link rel="stylesheet" href="<%=basePath%>/resources/css/login/style.css">
+    <!--登陆页的css-->
+
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="/resources/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="/resources/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -320,7 +327,10 @@
             <!-- END PAGE HEADER-->
 
             <!-- 页面主体 -->
-            <div id="main-content"></div>
+            <div id="main-content">
+            <%--  //  <iframe src="" id="mainContext" style="width: 500px;height: 600px"></iframe>--%>
+
+            </div>
 
             <!-- 页面主体-->
         </div>
@@ -359,5 +369,10 @@
 <script type="text/javascript" src="/resources/app/js/index.js"></script>
 
 <!-- <script data-main="app/js/main" src="app/lib/requirejs/require.js"></script> -->
+
+<!-- Javascript 登陆的js-->
+<%--<script src="<%=basePath%>/resources/js/login/supersized.3.2.7.min.js"></script>
+<script src="<%=basePath%>/resources/js/login/supersized-init.js"></script>
+<script src="<%=basePath%>/resources/js/login/scripts.js"></script>--%>
 </body>
 </html>

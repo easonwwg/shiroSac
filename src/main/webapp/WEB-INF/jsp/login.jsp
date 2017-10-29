@@ -12,10 +12,10 @@
     <meta name="author" content="">
 
     <!-- CSS -->
-    <link rel='stylesheet' href="<%=basePath%>/resources/css/login/googleeapis.css">
-    <link rel="stylesheet" href="<%=basePath%>/resources/css/login/reset.css">
-    <link rel="stylesheet" href="<%=basePath%>/resources/css/login/supersized.css">
-    <link rel="stylesheet" href="<%=basePath%>/resources/css/login/style.css">
+    <link rel='stylesheet' href="/resources/css/login/googleeapis.css">
+    <link rel="stylesheet" href="/resources/css/login/reset.css">
+    <link rel="stylesheet" href="/resources/css/login/supersized.css">
+    <link rel="stylesheet" href="/resources/css/login/style.css">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -47,10 +47,10 @@
 </div>
 
 <!-- Javascript -->
-<script src="<%=basePath%>/resources/js/jquery-1.7.1.js"></script>
-<script src="<%=basePath%>/resources/js/login/supersized.3.2.7.min.js"></script>
-<script src="<%=basePath%>/resources/js/login/supersized-init.js"></script>
-<script src="<%=basePath%>/resources/js/login/scripts.js"></script>
+<script src="/resources/js/jquery-1.7.1.js"></script>
+<script src="/resources/js/login/supersized.3.2.7.min.js"></script>
+<%--<script src="/resources/js/login/supersized-init.js"></script>--%>
+<script src="/resources/js/login/scripts.js"></script>
 
 </body>
 
