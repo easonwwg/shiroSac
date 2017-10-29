@@ -33,6 +33,9 @@ jQuery(document).ready(function() {
         parent.onbeforeunload = null;
         parent.location.reload();
     }
+    else {
+        alert("可能没有失效");
+    }
     $('.page-container form').submit(function(){
         alert("提交了")
         var username = $(this).find('.username').val();
