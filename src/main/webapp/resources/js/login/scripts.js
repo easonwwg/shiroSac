@@ -27,17 +27,14 @@ jQuery(document).ready(function() {
         ]
 
     });
-    //session失效时会在标签中显示登陆页，这里进行父页面刷新操作。
+
     if(parent != window){
         alert("用户登陆已失效，请重新登陆！");
         parent.onbeforeunload = null;
         parent.location.reload();
     }
-    else {
-        alert("可能没有失效");
-    }
+
     $('.page-container form').submit(function(){
-        alert("提交了")
         var username = $(this).find('.username').val();
         var password = $(this).find('.password').val();
         if(username == '') {

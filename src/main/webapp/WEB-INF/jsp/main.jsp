@@ -29,13 +29,6 @@
     <meta content="" name="author" />
     <meta name="MobileOptimized" content="320">
 
-    <!--登陆页的css-->
-    <link rel='stylesheet' href="<%=basePath%>/resources/css/login/googleeapis.css">
-    <link rel="stylesheet" href="<%=basePath%>/resources/css/login/reset.css">
-    <link rel="stylesheet" href="<%=basePath%>/resources/css/login/supersized.css">
-    <link rel="stylesheet" href="<%=basePath%>/resources/css/login/style.css">
-    <!--登陆页的css-->
-
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="/resources/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="/resources/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -328,7 +321,7 @@
 
             <!-- 页面主体 -->
             <div id="main-content">
-            <%--  //  <iframe src="" id="mainContext" style="width: 500px;height: 600px"></iframe>--%>
+            <iframe src="" id="mainContext" frameborder="0" marginheight="0"  scrolling="no"></iframe>
 
             </div>
 
