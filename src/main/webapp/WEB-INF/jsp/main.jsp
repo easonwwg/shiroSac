@@ -321,7 +321,7 @@
 
             <!-- 页面主体 -->
             <div id="main-content">
-            <iframe src="" id="mainContext" frameborder="0" marginheight="0"  scrolling="no"></iframe>
+                <iframe onload="changeFrameHeight()"  src="" id="mainContext" frameborder="0" marginheight="0"  scrolling="no" style="width: 100%"></iframe>
 
             </div>
 
@@ -362,10 +362,20 @@
 <script type="text/javascript" src="/resources/app/js/index.js"></script>
 
 <!-- <script data-main="app/js/main" src="app/lib/requirejs/require.js"></script> -->
-
 <!-- Javascript 登陆的js-->
+<script type="text/javascript">
+    function changeFrameHeight(){
+        var ifm= document.getElementById("mainContext");
+        ifm.height=document.documentElement.clientHeight;
+       // ifm.height=document.getElementById("mainContext").contentWindow.document.body.scrollHeight
+    }
+    window.onresize=function(){
+        changeFrameHeight();
+    }
+</script>
 <%--<script src="<%=basePath%>/resources/js/login/supersized.3.2.7.min.js"></script>
 <script src="<%=basePath%>/resources/js/login/supersized-init.js"></script>
 <script src="<%=basePath%>/resources/js/login/scripts.js"></script>--%>
+
 </body>
 </html>

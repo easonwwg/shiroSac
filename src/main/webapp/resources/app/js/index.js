@@ -24,7 +24,9 @@ $(function () {
                 e.preventDefault();
                 var url = this.href;
                 if (url != null && url != 'javascript:;') {
-                    $("#mainContext").attr('src',url);
+
+                    /**iframe方法**/
+                $("#mainContext").attr('src',url);
 
                     /*   $.get(url, function (data) {
                          /!*动态加载js到父页面的HEAD中去
@@ -46,7 +48,7 @@ $(function () {
                            headTag.appendChild(s3);*!/
                            $('#main-content').html(data);
                        });*/
-                 /*   $.ajax({
+               /* $.ajax({
                         type : "get",
                         url : url,
                         async : false,

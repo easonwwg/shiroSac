@@ -36,7 +36,6 @@
     </form>
 
 </div>
-
 <!-- Javascript -->
 <script src="/resources/js/jquery-1.7.1.js"></script>
 <script src="/resources/js/login/supersized.3.2.7.min.js"></script>
