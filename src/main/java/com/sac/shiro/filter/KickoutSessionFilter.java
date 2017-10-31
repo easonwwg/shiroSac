@@ -2,11 +2,11 @@ package com.sac.shiro.filter;
 
 import com.sac.shiro.cache.SessionCache;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.mgt.SessionsSecurityManager;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.web.filter.AccessControlFilter;
+import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.ServletRequest;
@@ -26,6 +26,13 @@ public class KickoutSessionFilter extends AccessControlFilter {
     protected boolean isAccessAllowed(ServletRequest servletRequest, ServletResponse servletResponse, Object o) throws Exception {
         System.out.println("进入到第二个过滤器判断权限");
         SessionCache sessionCache = new SessionCache();
+        if (SecurityUtils.getSubject().getSession().getAttribute("kickout")!=null){
+               //用户已经标记要退出
+            getSubject(servletRequest,servletResponse).logout();
+            WebUtils.getSavedRequest(servletRequest);
+            WebUtils.issueRedirect(servletRequest, servletResponse, " /user/login?kinciout=3");
+            return  false;
+        }
         //当前用户的session
         Serializable serializableId = SecurityUtils.getSubject().getSession().getId();
         //获取当前用户的权限
@@ -37,9 +44,10 @@ public class KickoutSessionFilter extends AccessControlFilter {
             if (!serializableId.equals(serializable) && pricpalStr.equals(principalCollection)) {
                 //删除此session
                Session deleteSession= sessionDAO.readSession(serializable);
-               sessionDAO.delete(deleteSession);
+                deleteSession.setAttribute("kickout",true);
+           //    sessionDAO.delete(deleteSession);
                //删除map的key 防止再次找到删除session找不到
-               sessionCache.GetSessionCache().remove(serializable);
+              // sessionCache.GetSessionCache().remove(serializable);
             }
         }
 

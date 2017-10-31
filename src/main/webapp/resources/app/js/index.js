@@ -26,7 +26,7 @@ $(function () {
                 if (url != null && url != 'javascript:;') {
 
                     /**iframe方法**/
-                $("#mainContext").attr('src',url);
+               /* $("#mainContext").attr('src',url);*/
 
                     /*   $.get(url, function (data) {
                          /!*动态加载js到父页面的HEAD中去
@@ -48,16 +48,14 @@ $(function () {
                            headTag.appendChild(s3);*!/
                            $('#main-content').html(data);
                        });*/
-               /* $.ajax({
+              $.ajax({
                         type : "get",
                         url : url,
                         async : false,
                         success : function(data){
-                          //  data = eval("(" + data + ")");
-                           // aDataSet = data;
                             $('#main-content').html(data);
                         }
-                    });*/
+                    });
                 }
             });
         };
