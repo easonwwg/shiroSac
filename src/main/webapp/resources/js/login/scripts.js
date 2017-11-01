@@ -2,6 +2,7 @@
 
 
 jQuery(document).ready(function() {
+
     $.supersized({
         // Functionality
         slide_interval     : 4000,    // Length between transitions
@@ -27,12 +28,6 @@ jQuery(document).ready(function() {
         ]
 
     });
-
-    if(parent != window){
-        alert("用户登陆已失效，请重新登陆！");
-        parent.onbeforeunload = null;
-        parent.location.reload();
-    }
 
     $('.page-container form').submit(function(){
         var username = $(this).find('.username').val();

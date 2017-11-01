@@ -11,7 +11,7 @@
 <head>
     <title>Title</title>
     <script src="<%=basePath%>/resources/js/jquery-1.7.1.js"></script>
-<script type="text/javascript" src="<%=basePath%>/resources/test.js"></script>
+<script type="text/javascript" src="/resources/test.js"></script>
 <link rel="stylesheet" href="/resources/test.css"/>
 </head>
 <script type="text/javascript">

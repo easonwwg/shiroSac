@@ -48,7 +48,7 @@ public class ResourceCheckFilter extends AccessControlFilter {
         String url = getPathWithinApplication(servletRequest);
         logger.debug("进入到了访问权限认证--当前用户正在访问的 url => " + url);
         boolean isPermitted=subject.isPermitted(url);//这个方法会不断的将url与用户的权限进行匹配
-        System.out.println("LLLLLLLLLLLLLLLLLLLLLLLLLL-----严重结果是"+isPermitted);
+        System.out.println("-----验证结果是"+isPermitted);
         System.out.println("---------------------------进入到第一个过滤器判断权限结束");
        return isPermitted;
     }
