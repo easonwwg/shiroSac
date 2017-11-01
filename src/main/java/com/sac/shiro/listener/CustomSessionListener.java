@@ -58,7 +58,7 @@ public class CustomSessionListener implements SessionListener {
         //会话结束删除对应存放session-principalCollection的字典集合
         sessionCache.GetSessionCache().remove(serializable);
         System.out.println("会话结束"+serializable);
-        System.out.println("会话结束"+principalCollection);
+        //System.out.println("会话结束"+principalCollection);
     }
 
     @Override
