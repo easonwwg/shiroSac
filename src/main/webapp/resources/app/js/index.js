@@ -31,6 +31,7 @@ $(function () {
                         async: false,
                         success: function (data) {
                             if (data.indexOf("errorMsg") > 0) {
+                                layer.msg("您已经被剔除！请重新登陆！！")
                                 window.location.reload("/user/login");
                             }
                             else {

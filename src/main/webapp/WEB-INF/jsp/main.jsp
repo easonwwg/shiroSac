@@ -360,22 +360,7 @@
 
 <script src="/resources/assets/scripts/app.js" type="text/javascript"></script>
 <script type="text/javascript" src="/resources/app/js/index.js"></script>
-
+<script type="text/javascript" src="/resources/assets/plugins/layer/layer.js"></script>
 <!-- <script data-main="app/js/main" src="app/lib/requirejs/require.js"></script> -->
-<!-- Javascript 登陆的js-->
-<script type="text/javascript">
-    function changeFrameHeight(){
-        var ifm= document.getElementById("mainContext");
-        ifm.height=document.documentElement.clientHeight;
-       // ifm.height=document.getElementById("mainContext").contentWindow.document.body.scrollHeight
-    }
-    window.onresize=function(){
-        changeFrameHeight();
-    }
-</script>
-<%--<script src="<%=basePath%>/resources/js/login/supersized.3.2.7.min.js"></script>
-<script src="<%=basePath%>/resources/js/login/supersized-init.js"></script>
-<script src="<%=basePath%>/resources/js/login/scripts.js"></script>--%>
-
 </body>
 </html>

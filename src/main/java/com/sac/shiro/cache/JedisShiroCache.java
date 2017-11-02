@@ -32,7 +32,7 @@ public class JedisShiroCache<K,V>  implements Cache<K, V> {
      */
     private static final int DB_INDEX = 2;
 
-    private  int expireSeconds=60;
+    private  int expireSeconds=600;//过期时间十分钟
 
     /**
      * 构造函数
