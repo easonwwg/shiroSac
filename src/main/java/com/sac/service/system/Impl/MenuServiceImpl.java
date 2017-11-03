@@ -1,6 +1,8 @@
 package com.sac.service.system.Impl;
+import com.sac.dao.generic.GenericDao;
 import com.sac.dao.system.MenuDao;
 import com.sac.pojo.system.Menu;
+import com.sac.service.generic.GenericServiceImpl;
 import com.sac.service.system.Interface.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,12 +14,15 @@ import java.util.List;
  */
 
 @Service
-public class MenuServiceImpl implements MenuService {
+public class MenuServiceImpl extends GenericServiceImpl<Menu,String> implements MenuService {
 
     @Autowired
     MenuDao menuDao;
 
-
+    @Override
+    public GenericDao<Menu, String> GetDao() {
+        return menuDao;
+    }
 
     @Override
     public String GetMenuList() {
