@@ -18,7 +18,7 @@ public class MenuController {
 
     @RequestMapping(method = RequestMethod.GET,value = "/getMenus")
     @ResponseBody
-    private String GetMenuLists(){
+    public String GetMenuLists(){
         return  menuService.GetMenuList();
     }
 

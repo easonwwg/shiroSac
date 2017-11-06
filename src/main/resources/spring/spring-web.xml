@@ -5,14 +5,10 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-
-    <!--如果是注解开发需加如下-->
-    <aop:config proxy-target-class="true" />
-
     <!-- 组件扫描 -->
     <context:component-scan base-package="com.sac.web"/>
     <!-- 组件扫描 -->
-   <context:component-scan base-package="com.sac.rest"/>
+    <context:component-scan base-package="com.sac.rest"/>
 
     <!-- 配置SpringMVC -->
     <!-- 1.开启SpringMVC注解模式 -->
@@ -29,22 +25,22 @@
     <!--配置視圖解析器-->
     <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-       <property name="viewClass"
+        <property name="viewClass"
                   value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/jsp/" />
-        <property name="suffix" value=".jsp" />
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
 
     <!--静态资源访问-->
-    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
 
     <!-- 自定义swagger -->
     <bean class="com.sac.swagger.SwaggerRestApiConfig">
     </bean>
     <mvc:resources location="classpath:/META-INF/resources/"
-                   mapping="swagger-ui.html" />
+                   mapping="swagger-ui.html"/>
     <mvc:resources location="classpath:/META-INF/resources/webjars/"
-                   mapping="/webjars/**" />
+                   mapping="/webjars/**"/>
 
     <!-- 文件上传下载 -->
     <!-- 定义文件解释器 -->
@@ -55,7 +51,8 @@
         <!-- 上传图片最大大小5M -->
         <property name="maxUploadSize" value="10485760"></property>
     </bean>
-    <!-- 配置的信息 -->
+
+    <!-- 配置文件信息 -->
     <bean id="configProperties"
           class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="locations">
@@ -64,6 +61,18 @@
             </list>
         </property>
     </bean>
+
+    <!--定义控制器方法的拦截，主要可以记录一些日志的信息-->
+    <bean id="controllerMethodInterceptor" class="com.sac.aop.ControllerMethodInterceptor">
+    </bean>
+    <!--如果是注解开发需加如下-->
+    <aop:config proxy-target-class="true">
+        <aop:pointcut id="methodPoint"
+                      expression="execution(* com.sac.rest..*.*(..))
+                               or execution(* com.sac.web..*.*(..))"/>
+        <aop:advisor pointcut-ref="methodPoint"
+                     advice-ref="controllerMethodInterceptor"/>
+    </aop:config>
 
 
 </beans>

@@ -11,14 +11,14 @@ public class User implements Serializable {
 
     private Long id;
 
-    private  String nickName;
+    private String nickName;
 
-    private  String email;
+    private String email;
 
     /**
      * 使用transient 不参加序列化过程
      */
-    private  transient String pswd;
+    private transient String pswd;
 
     private Date createTime;
 
@@ -34,7 +34,7 @@ public class User implements Serializable {
      * 1有效
      * 0禁止登陆
      */
-    private  int status;
+    private int status;
 
     public List<Role> getRoles() {
         return roles;
@@ -102,10 +102,11 @@ public class User implements Serializable {
 
     /**
      * 这里的toString()方法是用户缓存的key
+     *
      * @return
      */
     @Override
     public String toString() {
-        return getNickName()+"-"+getEmail();
+        return getNickName() + "-" + getEmail();
     }
 }
