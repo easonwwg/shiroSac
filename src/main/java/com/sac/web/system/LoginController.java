@@ -112,8 +112,7 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/checklogin", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-    public String login(String userName, String passwd, Model model,
-                        HttpServletRequest request) {
+    public String login( HttpServletRequest request,String userName, String passwd, Model model) {
         Subject currentSubject = SecurityUtils.getSubject();
         if(currentSubject.isRemembered()){
             System.out.print("用户已经记住了我");
@@ -143,5 +142,17 @@ public class LoginController {
         }
         //直接跳转到首页
         return "redirect:/user/main";
+    }
+
+    /**
+     * 退出登录
+     *
+     * @return
+     */
+    @RequestMapping(value = "/toLogOut", method = RequestMethod.GET)
+    public String toLogOut(HttpServletRequest request) {
+        Subject subject = SecurityUtils.getSubject();
+            subject.logout();
+            return "login";
     }
 }

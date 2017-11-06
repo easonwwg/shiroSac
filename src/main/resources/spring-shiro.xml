@@ -13,7 +13,7 @@
      -->
     <bean id="sampleRealm" class="com.sac.shiro.core.SecurityRealm">
         <!-- 将自定义的权限匹配器注入到自定义 Realm 中 -->
-       <property name="permissionResolver" ref="permissionResolver"/>
+        <property name="permissionResolver" ref="permissionResolver"/>
         <!--密碼通過credentialsMatcher比對-->
         <property name="credentialsMatcher">
             <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
@@ -28,12 +28,12 @@
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="sampleRealm"/>
         <!--配置缓存 这个是基于redis的缓存 缓存角色和权限的信息，避免每次都去查询数据库，照成数据库的压力-->
-       <!-- <property name="cacheManager" ref="ehCacheManager"/>-->
+        <!-- <property name="cacheManager" ref="ehCacheManager"/>-->
         <!--session的管理-->
         <!--这个是基于redis的缓存-->
-      <property name="cacheManager" ref="customShiroCacheManager"/>
+        <property name="cacheManager" ref="customShiroCacheManager"/>
         <!--自定义session管理器-->
-       <property name="sessionManager" ref="sessionManager"/>
+        <property name="sessionManager" ref="sessionManager"/>
     </bean>
 
     <!--自定义cacheManager-->
@@ -44,14 +44,14 @@
         <property name="jedisManager" ref="jedisManager"/>
     </bean>
     <!-- redis 的缓存 -->
-   <bean id="jedisManager" class="com.sac.shiro.cache.JedisManager">
+    <bean id="jedisManager" class="com.sac.shiro.cache.JedisManager">
         <property name="jedisPool" ref="jedisPool"/>
     </bean>
 
     <!-- 配置 shiro 的 ehcache 缓存相关,这个缓存只和 Realm 相关 -->
-   <!-- <bean id="ehCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
-    </bean>-->
+    <!-- <bean id="ehCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+         <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
+     </bean>-->
 
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
@@ -66,16 +66,16 @@
                 /resources/** = anon
                 /user/error =anon
                 /favicon.ico = anon
-                /user/logout = logout
-               /** = authc , resourceCheckFilter ,kictOut
-              <!--  /** =user,resourceCheckFilter-->
+                <!-- /user/logout = logout-->
+                /user/toLogOut =anon
+                /** = authc , resourceCheckFilter ,kictOut
             </value>
         </property>
-       <!-- <property name="filters">
-            <map>
-                <entry key="kickCheck" value-ref="kictOut"></entry>
-            </map>
-        </property>-->
+        <!-- <property name="filters">
+             <map>
+                 <entry key="kickCheck" value-ref="kictOut"></entry>
+             </map>
+         </property>-->
     </bean>
 
     <!-- 声明一个自定义的过滤器 -->
@@ -91,7 +91,7 @@
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
           depends-on="lifecycleBeanPostProcessor">
         <!--如需要注解开发 需要加如下内容-->
-       <property name="proxyTargetClass" value="true" />
+        <property name="proxyTargetClass" value="true"/>
     </bean>
 
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
@@ -99,29 +99,29 @@
     </bean>
 
     <!--注解开发需要加入一下内容-->
-   <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>
-          <!--    &lt;!&ndash;  &lt;!&ndash;登录&ndash;&gt;
-                <prop key="org.apache.shiro.authz.UnauthenticatedException">
-                    redirect:/login
-                </prop>
-                &lt;!&ndash;授权&ndash;&gt;
-                <prop key="org.apache.shiro.authz.UnauthorizedException">
-                    redirect:/admin/common/exceptionLog
-                </prop>&ndash;&gt;-->
+                <!--    &lt;!&ndash;  &lt;!&ndash;登录&ndash;&gt;
+                      <prop key="org.apache.shiro.authz.UnauthenticatedException">
+                          redirect:/login
+                      </prop>
+                      &lt;!&ndash;授权&ndash;&gt;
+                      <prop key="org.apache.shiro.authz.UnauthorizedException">
+                          redirect:/admin/common/exceptionLog
+                      </prop>&ndash;&gt;-->
             </props>
         </property>
         <property name="defaultErrorView" value="redirect:/user/error"/>
     </bean>
 
-     <!--session的会话管理-->
+    <!--session的会话管理-->
     <!--全局会话坚监听-->
-  <!--  <bean id="customSessionListener" class="com.sac.shiro.session.CustomSessionListener"/>-->
-   <!-- <bean id="sessionDAO" class="com.sac.shiro.session.ShrioSessionDao"></bean>-->
-<!--
-    <bean id="customSessionListener" class="com.sac.shiro.session.CustomSessionListener"/>
--->
+    <!--  <bean id="customSessionListener" class="com.sac.shiro.session.CustomSessionListener"/>-->
+    <!-- <bean id="sessionDAO" class="com.sac.shiro.session.ShrioSessionDao"></bean>-->
+    <!--
+        <bean id="customSessionListener" class="com.sac.shiro.session.CustomSessionListener"/>
+    -->
 
     <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.MemorySessionDAO"></bean>
     <!--这个暂时没有用到-->
@@ -131,16 +131,16 @@
         <property name="onlineService" ref="sessionListener"/>
     </bean>
 
-    <bean id="sessionManager"  class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
         <property name="sessionDAO" ref="sessionDAO"></property>
         <!-- 相隔多久检查一次session的有效性   -->
         <property name="sessionValidationInterval" value="1800000"/>
         <property name="globalSessionTimeout" value="1800000"/>
-         <property name="sessionListeners">
-             <list>
-                 <ref bean="customSessionListener"/>
-             </list>
-         </property>
+        <property name="sessionListeners">
+            <list>
+                <ref bean="customSessionListener"/>
+            </list>
+        </property>
 
     </bean>
 

@@ -87,7 +87,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/user/logout">
+                     <%--   <a href="/user/logout">--%>
+                         <a href="/user/toLogOut">
+
                             <i class="fa fa-key"></i> 注销
                         </a>
                     </li>
