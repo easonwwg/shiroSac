@@ -68,6 +68,10 @@
                 /favicon.ico = anon
                 <!-- /user/logout = logout-->
                 /user/toLogOut =anon
+                /webjars/** = anon
+                /swagger-resources/** = anon
+                /v2/** = anon
+                /swagger-ui.html = anon
                 /** = authc , resourceCheckFilter ,kictOut
             </value>
         </property>
