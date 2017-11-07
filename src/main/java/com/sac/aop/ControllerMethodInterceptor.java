@@ -1,10 +1,8 @@
 package com.sac.aop;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sac.web.system.LoginController;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.stream.Collectors;
 
 /**
  * @Author:eason
@@ -28,13 +25,14 @@ public class ControllerMethodInterceptor implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
+        Object result = null;
         logger.error("环绕前: interceptor name: {}", invocation.getMethod().getName());
         Object[] methodsArgs = invocation.getArguments();
         if (invocation.getMethod().getDeclaringClass().getPackage().getName().contains("com.sac.rest")) {
-              System.out.println("记录用户请求接口的传入和返回的参数");
+            System.out.println("记录用户请求接口的传入和返回的参数");
         } else if (invocation.getMethod().getDeclaringClass().getPackage().getName().contains("com.sac.web")) {
             Object obj = Arrays.stream(methodsArgs).filter(s ->
-                    s instanceof HttpServletRequest
+                            s instanceof HttpServletRequest
             ).findAny().orElse(null);
             if (obj != null) {
                 HttpServletRequest request = (HttpServletRequest) obj;
@@ -46,7 +44,7 @@ public class ControllerMethodInterceptor implements MethodInterceptor {
                 System.out.println("用户请求的ip是" + request.getRemoteAddr());
             }
         }
-        Object result = invocation.proceed();
+        result = invocation.proceed();
         logger.error("环绕后: result: {}", result);
         return result;
     }

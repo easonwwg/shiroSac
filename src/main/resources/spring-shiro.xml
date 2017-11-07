@@ -66,8 +66,8 @@
                 /resources/** = anon
                 /user/error =anon
                 /favicon.ico = anon
-                <!-- /user/logout = logout-->
                 /user/toLogOut =anon
+                /user/sysError = anon
                 /webjars/** = anon
                 /swagger-resources/** = anon
                 /v2/** = anon
@@ -75,11 +75,6 @@
                 /** = authc , resourceCheckFilter ,kictOut
             </value>
         </property>
-        <!-- <property name="filters">
-             <map>
-                 <entry key="kickCheck" value-ref="kictOut"></entry>
-             </map>
-         </property>-->
     </bean>
 
     <!-- 声明一个自定义的过滤器 -->
@@ -102,22 +97,10 @@
         <property name="securityManager" ref="securityManager"/>
     </bean>
 
-    <!--注解开发需要加入一下内容-->
-    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionMappings">
-            <props>
-                <!--    &lt;!&ndash;  &lt;!&ndash;登录&ndash;&gt;
-                      <prop key="org.apache.shiro.authz.UnauthenticatedException">
-                          redirect:/login
-                      </prop>
-                      &lt;!&ndash;授权&ndash;&gt;
-                      <prop key="org.apache.shiro.authz.UnauthorizedException">
-                          redirect:/admin/common/exceptionLog
-                      </prop>&ndash;&gt;-->
-            </props>
-        </property>
-        <property name="defaultErrorView" value="redirect:/user/error"/>
-    </bean>
+    <!--自定义异常-->
+  <!-- <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="redirect:/user/sysError"/>
+    </bean>-->
 
     <!--session的会话管理-->
     <!--全局会话坚监听-->

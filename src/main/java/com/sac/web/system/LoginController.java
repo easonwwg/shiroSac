@@ -15,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
@@ -64,6 +66,9 @@ public class LoginController {
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String toIndex1() {
       //  SecurityUtils.getSubject().getSession().stop();
+        if (5>4){
+            throw  new MaxUploadSizeExceededException(2222);
+        }
         return "delete";
     }
 
@@ -155,4 +160,16 @@ public class LoginController {
             subject.logout();
             return "login";
     }
+
+
+    /**
+     * 用户异常页面
+     *
+     * @return
+     */
+    @RequestMapping(value = "/sysError", method = RequestMethod.GET)
+    public String sysError(RedirectAttributes redirectAttributes) {
+        return "sysError";
+    }
+
 }
