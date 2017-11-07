@@ -74,6 +74,6 @@
                      advice-ref="controllerMethodInterceptor"/>
     </aop:config>
 
-    <!--统一日志处理-->
+    <!--统一异常处理-->
     <bean id="exceptionHandler" class="com.sac.aop.ExceptionHandler"/>
 </beans>

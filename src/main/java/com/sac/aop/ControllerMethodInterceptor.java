@@ -19,10 +19,10 @@ import java.util.Date;
 public class ControllerMethodInterceptor implements MethodInterceptor {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private  final  String restPackageName="com.sac.rest";
-    private  final  String webPackageName="com.sac.rest";
-    private  final  String login="login";
-    private  final  String  logOut="toLogOut";
+    private final String restPackageName = "com.sac.rest";
+    private final String webPackageName = "com.sac.rest";
+    private final String login = "login";
+    private final String logOut = "toLogOut";
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
@@ -33,7 +33,7 @@ public class ControllerMethodInterceptor implements MethodInterceptor {
             System.out.println("记录用户请求接口的传入和返回的参数");
         } else if (invocation.getMethod().getDeclaringClass().getPackage().getName().contains(webPackageName)) {
             Object obj = Arrays.stream(methodsArgs).filter(s ->
-                            s instanceof HttpServletRequest
+                    s instanceof HttpServletRequest
             ).findAny().orElse(null);
             if (obj != null) {
                 HttpServletRequest request = (HttpServletRequest) obj;
