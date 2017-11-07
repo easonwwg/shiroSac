@@ -1,5 +1,6 @@
 package com.sac.aop;
 
+import com.sac.exception.BaseException;
 import org.apache.log4j.Logger;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.HandlerExceptionResolver;
@@ -28,10 +29,8 @@ public class ExceptionHandler implements HandlerExceptionResolver {
         ModelAndView modelAndView = new ModelAndView();
         //跳转到自定义错误页面
         modelAndView.setViewName("/sysError");
-        if (ex instanceof MaxUploadSizeExceededException) {
-            modelAndView.addObject("msg", "文件大小超过限制!");
-        } else if (ex instanceof SQLException) {
-            modelAndView.addObject("msg", "数据库发生异常!");
+        if (ex instanceof BaseException) {
+            modelAndView.addObject("msg", ex.getMessage());
         } else {
             map.put("msg", "系统错误!");
         }

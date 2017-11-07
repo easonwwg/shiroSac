@@ -1,5 +1,6 @@
 package com.sac.web.system;
 
+import com.sac.exception.BusinessException;
 import com.sac.service.system.Interface.UserService;
 import com.sac.shiro.cache.SessionCache;
 import org.apache.shiro.SecurityUtils;
@@ -67,7 +68,7 @@ public class LoginController {
     public String toIndex1() {
       //  SecurityUtils.getSubject().getSession().stop();
         if (5>4){
-            throw  new MaxUploadSizeExceededException(2222);
+            throw  new BusinessException("超出最大字节数");
         }
         return "delete";
     }
