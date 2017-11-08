@@ -25,6 +25,8 @@ $(function () {
                 if (url != null && url != 'javascript:;') {
                     /**iframe方法**/
                     /* $("#mainContext").attr('src',url);*/
+                    //获取用户的sessionId也就是用户的session，存在客户端的是sessionId
+                    console.log(document.cookie)
                     $.ajax({
                         type: "get",
                         url: url,

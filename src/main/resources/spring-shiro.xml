@@ -116,11 +116,20 @@
         <property name="onlineService" ref="sessionListener"/>
     </bean>
 
+    <!-- 会话Cookie模板，使用sid存储sessionid -->
+    <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <constructor-arg value="sid"/>
+        <property name="httpOnly" value="false"/>
+        <property name="maxAge" value="180000"/>
+    </bean>
     <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
         <property name="sessionDAO" ref="sessionDAO"></property>
         <!-- 相隔多久检查一次session的有效性   -->
         <property name="sessionValidationInterval" value="1800000"/>
         <property name="globalSessionTimeout" value="1800000"/>
+        <!--配置sessionIdCookie管理器-->
+        <property name="sessionIdCookieEnabled" value="true"></property>
+        <property name="sessionIdCookie" ref="sessionIdCookie"></property>
         <property name="sessionListeners">
             <list>
                 <ref bean="customSessionListener"/>

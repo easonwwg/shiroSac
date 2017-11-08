@@ -23,7 +23,6 @@
     <![endif]-->
 
 </head>
-
 <body>
 
 <div class="page-container">
