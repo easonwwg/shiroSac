@@ -16,19 +16,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ResourceCheckFilter extends AccessControlFilter {
 
-    private String errorUrl;
+    private String errorUrl = "/user/error";
+    private String local = "/";
     private static final Logger logger = LoggerFactory.getLogger(ResourceCheckFilter.class);
-
-    public String getErrorUrl() {
-        return errorUrl;
-    }
-
-    public void setErrorUrl(String errorUrl) {
-        this.errorUrl = errorUrl;
-    }
 
     /**
      * 验证每一个资源的权限
+     *
      * @param servletRequest
      * @param servletResponse
      * @param o
@@ -38,7 +32,7 @@ public class ResourceCheckFilter extends AccessControlFilter {
     @Override
     protected boolean isAccessAllowed(ServletRequest servletRequest, ServletResponse servletResponse, Object o) throws Exception {
 
-        if (null==SecurityUtils.getSubject().getSession()){
+        if (null == SecurityUtils.getSubject().getSession()) {
             System.out.println("——————————————————————此次请求的session为空");
         }
 
@@ -46,18 +40,23 @@ public class ResourceCheckFilter extends AccessControlFilter {
         org.apache.shiro.subject.Subject subject
                 = getSubject(servletRequest, servletResponse);
         String url = getPathWithinApplication(servletRequest);
+        //如果是地址栏直接输入ip加端口，直接放行
+        if (local.equals(url)) {
+            return true;
+        }
         logger.debug("进入到了访问权限认证--当前用户正在访问的 url => " + url);
-        boolean isPermitted=subject.isPermitted(url);//这个方法会不断的将url与用户的权限进行匹配
-        System.out.println("-----验证结果是"+isPermitted);
+        //下面方法会不断的将url与用户的权限进行匹配
+        boolean isPermitted = subject.isPermitted(url);
+        System.out.println("-----验证结果是" + isPermitted);
         System.out.println("---------------------------进入到第一个过滤器判断权限结束");
-       return isPermitted;
+        return isPermitted;
     }
 
     @Override
     protected boolean onAccessDenied(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
         logger.debug("当 isAccessAllowed 返回 false 的时候，才会执行 method onAccessDenied ");
-        HttpServletRequest request =(HttpServletRequest) servletRequest;
-        HttpServletResponse response =(HttpServletResponse) servletResponse;
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
         response.sendRedirect(request.getContextPath() + this.errorUrl);
         return false;
     }
