@@ -323,8 +323,8 @@
 
             <!-- 页面主体 -->
             <div id="main-content">
-          <%--  <iframe onload="changeFrameHeight()"  src="" id="mainContext" frameborder="0" marginheight="0"  scrolling="no" style="width: 100%"></iframe>
-           --%>
+        <iframe src="" id="mainContext" frameborder="0" marginheight="0"  scrolling="no" style="width: 100%"></iframe>
+
             </div>
 
             <!-- 页面主体-->

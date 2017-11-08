@@ -24,10 +24,13 @@ $(function () {
                 var url = this.href;
                 if (url != null && url != 'javascript:;') {
                     /**iframe方法**/
-                    /* $("#mainContext").attr('src',url);*/
+                    var height="700px";
+
+                    $("#mainContext").height("700px");
+                 $("#mainContext").attr('src',url);
                     //获取用户的sessionId也就是用户的session，存在客户端的是sessionId
                     console.log(document.cookie)
-                    $.ajax({
+                /*   $.ajax({
                         type: "get",
                         url: url,
                         async: false,
@@ -36,14 +39,14 @@ $(function () {
                                 layer.msg("您已经被剔除！请重新登陆！！");
                                 window.setTimeout(function () {
                                     window.location.reload("/user/login");
-                                },2000);
+                                }, 2000);
                             }
                             else {
                                 $("#main-content").html(data);
                             }
 
                         }
-                    });
+                    });*/
                 }
             });
         };
