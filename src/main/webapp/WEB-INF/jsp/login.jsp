@@ -24,7 +24,13 @@
 
 </head>
 <body>
-
+<script type="text/javascript">
+    if(parent != window){ //session失效时会在标签中显示登陆页，这里进行父页面刷新操作。
+        alert("用户登陆已失效，请重新登陆！");
+        parent.onbeforeunload = null;
+        parent.location.reload();
+    }
+</script>
 <div class="page-container">
     <h1>Login</h1>
     <form action="/user/checklogin" method="post">
