@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String toIndex() {
-        return "main";
+    public String toIndex()
+    {
+        return "redirect:/user/main";
     }
 
 }
