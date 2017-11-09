@@ -10,7 +10,7 @@
 <head>
     <title></title>
 </head>
-<body>
+<body style="height: 200px">
 ${msg}
 </body>
 </html>

@@ -327,12 +327,9 @@
             <div id="main-content">
                 <iframe src="" id="mainContext" frameborder="0"
                         marginheight="0" scrolling="no"
-                        style="width: 100%">
-
+                        style="width: 100%;">
                 </iframe>
-
             </div>
-
             <!-- 页面主体-->
         </div>
     </div>
@@ -370,6 +367,5 @@
 <script src="/resources/assets/scripts/app.js" type="text/javascript"></script>
 <script type="text/javascript" src="/resources/app/js/index.js"></script>
 <script type="text/javascript" src="/resources/assets/plugins/layer/layer.js"></script>
-<!-- <script data-main="app/js/main" src="app/lib/requirejs/require.js"></script> -->
 </body>
 </html>

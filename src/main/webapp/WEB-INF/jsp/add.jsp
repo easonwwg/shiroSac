@@ -14,13 +14,13 @@
     <script type="text/javascript" src="/resources/test.js"></script>
     <link rel="stylesheet" href="/resources/test.css"/>
 </head>
-<body id="iframeBody" style="height: 800px">
+<body id="iframeBody" style="height: 2000px">
 增加用户
 <br/>
 <img src="/resources/img/backgrounds/2.jpg">
 <br/>
 
-<div id="testDiv">
+<div id="testDiv" style="height: 500px; width: 100%; background-color: #4d90fe" >
     hhwwhed
 </div>
 </body>

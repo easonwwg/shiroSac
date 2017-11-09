@@ -10,9 +10,9 @@
 <head>
     <title></title>
 </head>
-<body id="iframeBody" style="height: 800px">
-<div style="background-color: #4b0e58;height:600px;width: 100%;" >
-  ss
+<body id="iframeBody">
+<div style="background-color: #4b0e58;height:800px;width: 100%;">
+    ss
 </div>
 </body>
 </html>
