@@ -5,8 +5,8 @@
   Time: 21:24
   To change this template use File | Settings | File Templates.
 --%>
-<%@include file="/resources/common/basePath.jsp"%>
-<%@ page language="java" pageEncoding="UTF-8"%>
+<%@include file="/resources/common/basePath.jsp" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
 <%--<%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -21,31 +21,31 @@
 <!-- BEGIN HEAD -->
 <head>
     <base href="<%=basePath%>">
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>SacWeb</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="" name="description" />
-    <meta content="" name="author" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
     <meta name="MobileOptimized" content="320">
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="/resources/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="/resources/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="/resources/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link href="/resources/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN THEME STYLES -->
-    <link href="/resources/assets/css/style-metronic.css" rel="stylesheet" type="text/css" />
-    <link href="/resources/assets/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="/resources/assets/css/style-responsive.css" rel="stylesheet" type="text/css" />
-    <link href="/resources/assets/css/plugins.css" rel="stylesheet" type="text/css" />
-    <link href="/resources/assets/css/pages/tasks.css" rel="stylesheet" type="text/css" />
-    <link href="/resources/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
-    <link href="/resources/assets/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="/resources/assets/css/style-metronic.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/assets/css/pages/tasks.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="/resources/assets/css/custom.css" rel="stylesheet" type="text/css"/>
     <!-- END THEME STYLES -->
 
-    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico"/>
 </head>
 <!-- END HEAD -->
 
@@ -57,19 +57,20 @@
     <div class="header-inner">
         <!-- BEGIN LOGO -->
         <a class="navbar-brand" href="javascript:;">
-            <img src="/resources/assets/img/logo.jpg" alt="logo" class="img-responsive" />
+            <img src="/resources/assets/img/logo.jpg" alt="logo" class="img-responsive"/>
         </a>
         <!-- END LOGO -->
         <!-- BEGIN RESPONSIVE MENU TOGGLER -->
         <a href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <img
-                    src="/resources/assets/img/menu-toggler.png" alt="" />
+                    src="/resources/assets/img/menu-toggler.png" alt=""/>
         </a>
         <!-- END RESPONSIVE MENU TOGGLER -->
         <!-- BEGIN TOP NAVIGATION MENU -->
         <ul class="nav navbar-nav pull-right">
             <li class="dropdown user">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
+                   data-close-others="true">
                     <img alt="" src="/resources/assets/img/avatar1_small.jpg"/>
                     <!--用户名-->
                     <span class="username"><shiro:principal property="nickName"/> </span>
@@ -87,8 +88,8 @@
                         </a>
                     </li>
                     <li>
-                     <%--   <a href="/user/logout">--%>
-                         <a href="/user/toLogOut">
+                        <%--   <a href="/user/logout">--%>
+                        <a href="/user/toLogOut">
 
                             <i class="fa fa-key"></i> 注销
                         </a>
@@ -129,83 +130,83 @@
                 <!--下面的动态生成 js获取后台数据-->
 
 
-         <%--   <li class="">
-                    <!--跳转到控制器的地址-->
-                    <a href="javascript:;">
-                        <i class="fa fa-gears"></i><span class="title"> 系统管理 </span><span
-                            class="arrow "> </span>
-                    </a>
-                    <ul class="sub-menu">
-                        <!--跳转到控制器的地址-->
-                        <li>
-                            <a href="user/delete">
-                                用户管理
-                            </a>
-                            <ul class="sub-menu">
-                                <li>
-                                    <a href="user/add">
-                                        用户添加
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="user/delete">
-                                        用户删除
-                                    </a>
-                                </li>
-                                </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                角色管理
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                权限管理
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                <%--   <li class="">
+                           <!--跳转到控制器的地址-->
+                           <a href="javascript:;">
+                               <i class="fa fa-gears"></i><span class="title"> 系统管理 </span><span
+                                   class="arrow "> </span>
+                           </a>
+                           <ul class="sub-menu">
+                               <!--跳转到控制器的地址-->
+                               <li>
+                                   <a href="user/delete">
+                                       用户管理
+                                   </a>
+                                   <ul class="sub-menu">
+                                       <li>
+                                           <a href="user/add">
+                                               用户添加
+                                           </a>
+                                       </li>
+                                       <li>
+                                           <a href="user/delete">
+                                               用户删除
+                                           </a>
+                                       </li>
+                                       </ul>
+                               </li>
+                               <li>
+                                   <a href="javascript:;">
+                                       角色管理
+                                   </a>
+                               </li>
+                               <li>
+                                   <a href="javascript:;">
+                                       权限管理
+                                   </a>
+                               </li>
+                           </ul>
+                       </li>
 
-                <li class="">
-                    <a href="javascript:;">
-                        <i class="fa fa-user-circle"></i>
-                        <span class="title"> 个人中心 </span><span
-                            class="arrow "> </span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li>
-                            <a href="javascript:;">
-                                信息修改
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                密码修改
-                            </a>
-                        </li>
+                       <li class="">
+                           <a href="javascript:;">
+                               <i class="fa fa-user-circle"></i>
+                               <span class="title"> 个人中心 </span><span
+                                   class="arrow "> </span>
+                           </a>
+                           <ul class="sub-menu">
+                               <li>
+                                   <a href="javascript:;">
+                                       信息修改
+                                   </a>
+                               </li>
+                               <li>
+                                   <a href="javascript:;">
+                                       密码修改
+                                   </a>
+                               </li>
 
-                        <!-- 测试权限控制 -->
-                        <shiro:hasAnyRoles name="admin">
-                            <li>
-                                <a href="javascript:;">super_admin 拥有此角色</a>
-                            </li>
-                        </shiro:hasAnyRoles>
+                               <!-- 测试权限控制 -->
+                               <shiro:hasAnyRoles name="admin">
+                                   <li>
+                                       <a href="javascript:;">super_admin 拥有此角色</a>
+                                   </li>
+                               </shiro:hasAnyRoles>
 
-                        <shiro:hasPermission name="/user/create">
-                            <li>
-                                <a href="javascript:;">/user/create 拥有此权限</a>
-                            </li>
-                        </shiro:hasPermission>
+                               <shiro:hasPermission name="/user/create">
+                                   <li>
+                                       <a href="javascript:;">/user/create 拥有此权限</a>
+                                   </li>
+                               </shiro:hasPermission>
 
-                        <shiro:hasPermission name="/user/update">
-                            <li>
-                                <a href="javascript:;">/user/update 拥有此权限</a>
-                            </li>
-                        </shiro:hasPermission>
+                               <shiro:hasPermission name="/user/update">
+                                   <li>
+                                       <a href="javascript:;">/user/update 拥有此权限</a>
+                                   </li>
+                               </shiro:hasPermission>
 
-                    </ul>
-                </li>--%>
+                           </ul>
+                       </li>--%>
 
             </ul>
             <!-- 侧边栏菜单按钮结束 -->
@@ -216,7 +217,8 @@
     <div class="page-content-wrapper">
         <div class="page-content">
             <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-            <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -323,7 +325,11 @@
 
             <!-- 页面主体 -->
             <div id="main-content">
-        <iframe src="" id="mainContext" frameborder="0" marginheight="0"  scrolling="no" style="width: 100%"></iframe>
+                <iframe src="" id="mainContext" frameborder="0"
+                        marginheight="0" scrolling="no"
+                        style="width: 100%">
+
+                </iframe>
 
             </div>
 
@@ -351,7 +357,8 @@
 <script src="/resources/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 <script src="/resources/assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
 <script src="/resources/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="/resources/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="/resources/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"
+        type="text/javascript"></script>
 <script src="/resources/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <script src="/resources/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="/resources/assets/plugins/jquery.cokie.min.js" type="text/javascript"></script>

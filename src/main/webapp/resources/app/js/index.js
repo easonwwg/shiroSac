@@ -24,29 +24,46 @@ $(function () {
                 var url = this.href;
                 if (url != null && url != 'javascript:;') {
                     /**iframe方法**/
-                    var height="700px";
-
-                    $("#mainContext").height("700px");
-                 $("#mainContext").attr('src',url);
-                    //获取用户的sessionId也就是用户的session，存在客户端的是sessionId
-                    console.log(document.cookie)
-                /*   $.ajax({
+                    var ifameHeight;
+                    $.ajax({
                         type: "get",
                         url: url,
                         async: false,
-                        success: function (data) {
-                            if (data.indexOf("errorMsg") > 0) {
-                                layer.msg("您已经被剔除！请重新登陆！！");
-                                window.setTimeout(function () {
-                                    window.location.reload("/user/login");
-                                }, 2000);
-                            }
-                            else {
-                                $("#main-content").html(data);
-                            }
-
+                        dataType: 'html',
+                        success: function (xmlData) {
+                            alert(xmlData.getElements());
+                           /* var xmlJquery = $(xmlData);
+                            var styleValue = xmlJquery.find('#iframeBody').attr("style");
+                            ifameHeight = styleValue.split(",").filter(function (ele) {
+                                var eleArray = ele.split(":");
+                                return eleArray[0] == "height";
+                            }).toString().split(":")[1];*/
+                        },
+                        error:function(msg,status){
+                             alert(msg+"---"+status);
                         }
-                    });*/
+                    });
+                    $("#mainContext").height(ifameHeight);
+                    $("#mainContext").attr('src', url);
+                    //获取用户的sessionId也就是用户的session，存在客户端的是sessionId
+                    // console.log(document.cookie)
+                    /*   $.ajax({
+                     type: "get",
+                     url: url,
+                     async: false,
+                     success: function (data) {
+                     if (data.indexOf("errorMsg") > 0) {
+                     layer.msg("您已经被剔除！请重新登陆！！");
+                     window.setTimeout(function () {
+                     window.location.reload("/user/login");
+                     }, 2000);
+                     }
+                     else {
+                     $("#main-content").html(data);
+                     }
+
+                     }
+                     });*/
                 }
             });
         };

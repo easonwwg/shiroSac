@@ -10,7 +10,7 @@
 <head>
     <title>Title</title>
 </head>
-<body>
+<body id="iframeBody" style="height: 800px">
 删除用户
 </body>
 </html>
