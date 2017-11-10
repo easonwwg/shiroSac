@@ -95,25 +95,9 @@
         <property name="securityManager" ref="securityManager"/>
     </bean>
 
-    <!--自定义异常-->
-  <!-- <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="defaultErrorView" value="redirect:/user/sysError"/>
-    </bean>-->
-
-    <!--session的会话管理-->
-    <!--全局会话坚监听-->
-    <!--  <bean id="customSessionListener" class="com.sac.shiro.session.CustomSessionListener"/>-->
-    <!-- <bean id="sessionDAO" class="com.sac.shiro.session.ShrioSessionDao"></bean>-->
-    <!--
-        <bean id="customSessionListener" class="com.sac.shiro.session.CustomSessionListener"/>
-    -->
-
     <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.MemorySessionDAO"></bean>
-    <!--这个暂时没有用到-->
-    <bean id="sessionListener" class="com.sac.shiro.listener.OnlineServiceMemImpl"/>
     <bean id="customSessionListener" class="com.sac.shiro.listener.CustomSessionListener">
         <property name="sessionDAO" ref="sessionDAO"/>
-        <property name="onlineService" ref="sessionListener"/>
     </bean>
 
     <!-- 会话Cookie模板，使用sid存储sessionid -->

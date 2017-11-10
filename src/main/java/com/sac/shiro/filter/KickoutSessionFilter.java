@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -25,6 +24,7 @@ public class KickoutSessionFilter extends AccessControlFilter {
 
     /**
      * iframe的权限跳转控制代码
+     *
      * @param servletRequest
      * @param servletResponse
      * @param o
@@ -49,18 +49,19 @@ public class KickoutSessionFilter extends AccessControlFilter {
         //获取当前用户的权限
         String principalCollection = sessionCache.getMyMap(serializableId).toString();
         //遍历map
-        Map<Serializable,PrincipalCollection> tempSession= sessionCache.GetSessionCache();
+        Map<Serializable, PrincipalCollection> tempSession = sessionCache.GetSessionCache();
         for (Serializable serializable : sessionCache.GetSessionCache().keySet()) {
             String pricpalStr = sessionCache.getMyMap(serializable).toString();
             if (!serializableId.equals(serializable) && pricpalStr.equals(principalCollection)) {
                 //删除此session
-               Session deleteSession= sessionDAO.readSession(serializable);
-               //如果是div则需要一下代码  如果是iframe则注释
-               // deleteSession.setAttribute("kickout",true);
+                Session deleteSession = sessionDAO.readSession(serializable);
+                //如果是div则需要一下代码  如果是iframe则注释
+                // deleteSession.setAttribute("kickout",true);
                 //如果是iframe则需要一下两行代码  如果是div则注释
-               sessionDAO.delete(deleteSession);
-               //删除map的key 防止再次找到删除session找不到
-              sessionCache.GetSessionCache().remove(serializable);
+                //把之前登陆用户的session删除
+                sessionDAO.delete(deleteSession);
+                //删除map的key 防止再次找到删除session找不到
+                sessionCache.GetSessionCache().remove(serializable);
             }
         }
 
@@ -70,7 +71,7 @@ public class KickoutSessionFilter extends AccessControlFilter {
     @Override
     protected boolean onAccessDenied(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
         System.out.println("第二个过滤器权限验证失败");
-        Subject subject=getSubject(servletRequest,servletResponse);
+        Subject subject = getSubject(servletRequest, servletResponse);
         subject.logout();
         return false;
     }
