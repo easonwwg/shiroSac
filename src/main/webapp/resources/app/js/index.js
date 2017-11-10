@@ -24,37 +24,7 @@ $(function () {
                 var url = this.href;
                 if (url != null && url != 'javascript:;') {
                     /**iframe方法**/
-                    var ifameHeight = "1000px";
-                    /*         $.ajax({
-                     type: "get",
-                     url: url,
-                     async: false,
-                     dataType: 'html',
-                     success: function (xmlData) {
-                     var iframe = document.getElementById('mainContext');
-                     var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
-                     if (iframeWin.document.body) {
-                     var testHeight = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
-                     alert(testHeight);
-                     }
-                     //alert(xmlData.getElements());
-                     /!* var xmlJquery = $(xmlData);
-                     var styleValue = xmlJquery.find('#iframeBody').attr("style");
-                     ifameHeight = styleValue.split(",").filter(function (ele) {
-                     var eleArray = ele.split(":");
-                     return eleArray[0] == "height";
-                     }).toString().split(":")[1];*!/
-                     },
-                     error: function (msg, status) {
-                     alert(msg + "---" + status);
-                     }
-                     });*/
-                    // $("#mainContext").height(ifameHeight);
                     $("#mainContext").attr('src', url);
-                    //  var sss= $("#mainContext").contents().find('body').height();
-                    //  alert(sss);
-                    //获取用户的sessionId也就是用户的session，存在客户端的是sessionId
-                    // console.log(document.cookie)
                     /*   $.ajax({
                      type: "get",
                      url: url,
@@ -69,7 +39,6 @@ $(function () {
                      else {
                      $("#main-content").html(data);
                      }
-
                      }
                      });*/
                 }

@@ -3,6 +3,14 @@
 
 jQuery(document).ready(function() {
 
+    if(parent != window){ //session失效时会在标签中显示登陆页，这里进行父页面刷新操作。
+        layer.msg("您已经被剔除！请重新登陆！！");
+        window.setTimeout(function () {
+            parent.onbeforeunload = null;
+            parent.location.reload();
+        }, 2000);
+    }
+
     $.supersized({
         // Functionality
         slide_interval     : 4000,    // Length between transitions
