@@ -16,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -107,11 +106,21 @@ public class LoginController {
         return "error";
     }
 
+    /**
+     * 單點登陸失敗
+     *
+     * @return
+     */
+    @RequestMapping(value = "/error", method = RequestMethod.GET)
+    public String toSSOSSOErrorIndex() {
+        return "casFailure";
+    }
+
 
     /**
      * 登陆按钮
      *
-     * @param userName
+  * @param userName
      * @param passwd
      * @param model
      * @param request
