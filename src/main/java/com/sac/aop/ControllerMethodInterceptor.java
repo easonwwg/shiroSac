@@ -33,7 +33,7 @@ public class ControllerMethodInterceptor implements MethodInterceptor {
             System.out.println("记录用户请求接口的传入和返回的参数");
         } else if (invocation.getMethod().getDeclaringClass().getPackage().getName().contains(webPackageName)) {
             Object obj = Arrays.stream(methodsArgs).filter(s ->
-                    s instanceof HttpServletRequest
+                            s instanceof HttpServletRequest
             ).findAny().orElse(null);
             if (obj != null) {
                 HttpServletRequest request = (HttpServletRequest) obj;

@@ -167,14 +167,14 @@ public class restTest {
         return childList;
     }
 
-    @Autowired
+  /*  @Autowired
     private RedisTemplate<String,String> redisTemplate;
 
 
     @Resource(name = "redisDao")
     private  RedisDao redisDao;
 
-@Resource(name = "redisManager")
+@Resource(name = "redisManager")*/
 private  RedisManager redisManager;
 
     @Test
