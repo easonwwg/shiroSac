@@ -111,7 +111,7 @@ public class LoginController {
      *
      * @return
      */
-    @RequestMapping(value = "/error", method = RequestMethod.GET)
+    @RequestMapping(value = "/casFailure", method = RequestMethod.GET)
     public String toSSOSSOErrorIndex() {
         return "casFailure";
     }

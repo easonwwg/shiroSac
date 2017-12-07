@@ -39,7 +39,7 @@
     </bean>
 
     <bean id="casFilter" class="org.apache.shiro.cas.CasFilter">
-        <property name="failureUrl" value="/user/error"/>
+        <property name="failureUrl" value="/user/casFailure"/>
         <property name="successUrl" value="/user/main"/>
     </bean>
 
