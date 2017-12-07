@@ -73,7 +73,7 @@
                    data-close-others="true">
                     <img alt="" src="/resources/assets/img/avatar1_small.jpg"/>
                     <!--用户名-->
-                    <span class="username"><shiro:principal property="nickName"/> </span>
+                <%--    <span class="username"><shiro:principal property="nickName"/> </span>--%>
                     <i class="fa fa-angle-down"></i>
                 </a>
                 <ul class="dropdown-menu">

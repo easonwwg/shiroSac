@@ -3,6 +3,9 @@ package com.sac.shiro.core;
 import com.sac.pojo.system.User;
 import com.sac.service.system.Interface.RoleService;
 import com.sac.service.system.Interface.UserService;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.cas.CasRealm;
@@ -11,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,16 +42,16 @@ public class CaseRealm extends CasRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        User user = (User) principalCollection.getPrimaryPrincipal();
+        // User user = (User) principalCollection.getPrimaryPrincipal();
+        String uu = (String) principalCollection.getPrimaryPrincipal();
+        System.out.println(uu);
         logger.debug("进入到授权方法");
         //用户的角色
-        List<String> roles =
-                userService.listRoleByUserId(new Long(user.getId()).intValue());
-        //用户的权限
-        //现在做的是一个用户只有一个权限
-        String roleName = roles.get(0);
+        List<String> roles = Arrays.asList("admin");
+
         List<String> resources
-                = roleService.GetResourcesByRoleId(roleName);
+                = roleService.GetResourcesByRoleId("admin");
+        resources.add("/shiro-cast");
         //设置权限
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.setRoles(roles.stream().collect(Collectors.toSet()));
@@ -58,4 +62,12 @@ public class CaseRealm extends CasRealm {
         return info;
     }
 
+    @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+        AuthenticationInfo authc = super.doGetAuthenticationInfo(token);
+
+        String account = (String) authc.getPrincipals().getPrimaryPrincipal();
+
+        return  authc;
+    }
 }

@@ -19,7 +19,7 @@
         <property name="casServerUrlPrefix"
                   value="https://server.zhoubang85.com:8443/cas"/>
         <!-- 应用服务地址，用来接收cas服务端票据 -->
-        <property name="casService" value="localhost:8081/user/main"></property>
+        <property name="casService" value="http://localhost:8081/sac"></property>
     </bean>
 
     <bean id="casSubjectFactory" class="org.apache.shiro.cas.CasSubjectFactory"/>
@@ -58,18 +58,18 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <!-- 如果认证不通过,浏览器通过 Get 方式请求到 /login 上  可以直接些jsp吗？ -->
-        <property name="loginUrl" value="https://server.zhoubang85.com:8443/cas/login?service=http://localhost:8081/user/main"/>
+        <property name="loginUrl" value="https://server.zhoubang85.com:8443/cas/login?service=http://localhost:8081/sac"/>
       <!--  <property name="successUrl" value="/user/main"/>-->
         <!--访问没有权限的资源-->
-        <property name="unauthorizedUrl" value="/user/error"/>
+      <!--  <property name="unauthorizedUrl" value="/user/error"/>-->
         <property name="filters">
             <map>
-                <entry key="cas" value-ref="casFilter"></entry>
+                <entry key="casFilter" value-ref="casFilter"></entry>
             </map>
         </property>
         <property name="filterChainDefinitions">
             <value>
-                /user/main = cas
+                /sac = casFilter
                 /user/login = anon
                 /user/checklogin =anon
                 /resources/** = anon
@@ -81,7 +81,8 @@
                 /swagger-resources/** = anon
                 /v2/** = anon
                 /swagger-ui.html = anon
-                /** = authc , resourceCheckFilter ,kictOut
+               <!-- /** = authc , resourceCheckFilter ,kictOut-->
+                /** = user
             </value>
         </property>
     </bean>
