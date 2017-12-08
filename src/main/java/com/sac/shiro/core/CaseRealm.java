@@ -25,7 +25,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * @author:eason
+ * @author:eason 集成单点登录框架Cas的自定义Realm 需要启动本地的cas服务器
  * @Description：
  * @Date: 10:49,2017/12/7
  * @ModifiedBy
@@ -50,13 +50,11 @@ public class CaseRealm extends CasRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         User user = (User) principalCollection.getPrimaryPrincipal();
         logger.debug("进入到授权方法" + user.getNickName());
-        List<String> roles =
-                userService.listRoleByUserId(new Long(user.getId()).intValue());
+        List<String> roles = userService.listRoleByUserId(new Long(user.getId()).intValue());
         //用户的权限
         //现在做的是一个用户只有一个权限
         String roleName = roles.get(0);
-        List<String> resources
-                = roleService.GetResourcesByRoleId(roleName);
+        List<String> resources = roleService.GetResourcesByRoleId(roleName);
         //设置权限
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         info.setRoles(roles.stream().collect(Collectors.toSet()));
@@ -112,6 +110,7 @@ public class CaseRealm extends CasRealm {
      */
     @Override
     protected void clearCachedAuthenticationInfo(PrincipalCollection principals) {
+        System.out.println("realm清楚授权");
         super.clearCachedAuthenticationInfo(principals);
     }
 
@@ -122,6 +121,7 @@ public class CaseRealm extends CasRealm {
      */
     @Override
     protected void clearCachedAuthorizationInfo(PrincipalCollection principals) {
+        System.out.println("realm清楚认证");
         super.clearCachedAuthorizationInfo(principals);
     }
 }
