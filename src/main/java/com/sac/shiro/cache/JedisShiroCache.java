@@ -1,6 +1,7 @@
 package com.sac.shiro.cache;
 
 import com.sac.commons.SerializeUtil;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 
@@ -76,6 +77,7 @@ public class JedisShiroCache<K,V>  implements Cache<K, V> {
         } catch (Exception e) {
           System.out.println("获取值失败");
         }
+        SimpleAuthorizationInfo simpleAuthorizationInfo=(SimpleAuthorizationInfo)SerializeUtil.deserialize(byteValue);
         System.out.println("获取的缓存结果是"+(V) SerializeUtil.deserialize(byteValue));
         return (V) SerializeUtil.deserialize(byteValue);
     }

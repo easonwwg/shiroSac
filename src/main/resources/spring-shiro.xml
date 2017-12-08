@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:util="http://www.springframework.org/schema/util"
-       xsi:schemaLocation="
-       http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/util
-       http://www.springframework.org/schema/util/spring-util.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 自定义一个权限匹配器 -->
     <bean id="permissionResolver" class="com.sac.shiro.core.UrlPermissionResolver"/>
@@ -15,6 +11,7 @@
 
     <!--cas登陆-->
     <bean id="casRealm" class="com.sac.shiro.core.CaseRealm">
+        <property name="permissionResolver" ref="permissionResolver"/>
         <!-- cas服务端地址前缀 -->
         <property name="casServerUrlPrefix"
                   value="https://server.zhoubang85.com:8443/cas"/>
@@ -28,12 +25,7 @@
 
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realm" ref="casRealm"/>
-        <!--配置缓存 这个是基于redis的缓存 缓存角色和权限的信息，避免每次都去查询数据库，照成数据库的压力-->
-        <!-- <property name="cacheManager" ref="ehCacheManager"/>-->
-        <!--session的管理-->
-        <!--这个是基于redis的缓存-->
         <property name="cacheManager" ref="customShiroCacheManager"/>
-        <!--自定义session管理器-->
         <property name="sessionManager" ref="sessionManager"/>
         <property name="subjectFactory" ref="casSubjectFactory"/>
     </bean>
@@ -58,10 +50,11 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
         <!-- 如果认证不通过,浏览器通过 Get 方式请求到 /login 上  可以直接些jsp吗？ -->
-        <property name="loginUrl" value="https://server.zhoubang85.com:8443/cas/login?service=http://localhost:8081/sac"/>
-      <!--  <property name="successUrl" value="/user/main"/>-->
+        <property name="loginUrl"
+                  value="https://server.zhoubang85.com:8443/cas/login?service=http://localhost:8081/sac"/>
+        <!--  <property name="successUrl" value="/user/main"/>-->
         <!--访问没有权限的资源-->
-      <!--  <property name="unauthorizedUrl" value="/user/error"/>-->
+        <!--  <property name="unauthorizedUrl" value="/user/error"/>-->
         <property name="filters">
             <map>
                 <entry key="casFilter" value-ref="casFilter"></entry>
@@ -81,8 +74,7 @@
                 /swagger-resources/** = anon
                 /v2/** = anon
                 /swagger-ui.html = anon
-               <!-- /** = authc , resourceCheckFilter ,kictOut-->
-                /** = user
+                /** = authc , resourceCheckFilter
             </value>
         </property>
     </bean>

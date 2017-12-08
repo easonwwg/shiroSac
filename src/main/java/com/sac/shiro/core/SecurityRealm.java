@@ -69,7 +69,8 @@ public class SecurityRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         UsernamePasswordToken upToken = (UsernamePasswordToken) token;
         String username = upToken.getUsername();
-        User user = userService.login(username);//这里的user前台shiro标签可以访问
+        //这里的user前台shiro标签可以访问
+        User user = userService.login(username);
         if (user == null)
             throw new AuthenticationException("用户不存在");
         if (user.getStatus() == 0) {
