@@ -35,8 +35,8 @@
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
     <!-- 自定义swagger -->
-    <bean class="com.sac.swagger.SwaggerRestApiConfig">
-    </bean>
+    <bean class="com.sac.swagger.SwaggerRestApiConfig"/>
+
     <mvc:resources location="classpath:/META-INF/resources/"
                    mapping="swagger-ui.html"/>
     <mvc:resources location="classpath:/META-INF/resources/webjars/"
