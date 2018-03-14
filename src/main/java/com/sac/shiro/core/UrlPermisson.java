@@ -15,9 +15,19 @@ public class UrlPermisson implements Permission {
 
     private String url;
 
+    /**
+     * url指的是用户的权限
+     * @param url
+     */
     public UrlPermisson(String url) {
         this.url = url;
     }
+
+    /**
+     * 根据p可以获取用户当前访问的资源
+     * @param p
+     * @return
+     */
     @Override
     public boolean implies(Permission p) {
         if (!(p instanceof UrlPermisson)) {

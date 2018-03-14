@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * 用户的每一个权限和用户当前请求的权限都会进入到这个类里面进行匹配
  * 自定义shiro的权限匹配器 只有定义了这个才会匹配权限
  * Created by EAISON on 2017/9/29.
  */
@@ -16,7 +17,7 @@ public class UrlPermissionResolver implements PermissionResolver {
 
     @Override
     public Permission resolvePermission(String permissionString) {
-        logger.debug("此次验证的url是 " + permissionString);
+        logger.error("此次获取的权限资源是 " + permissionString);
 
         if(permissionString.startsWith("/")){
             //将参数传到UrlPermission中去判断

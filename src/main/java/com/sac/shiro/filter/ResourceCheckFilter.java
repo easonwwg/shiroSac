@@ -44,7 +44,7 @@ public class ResourceCheckFilter extends AccessControlFilter {
         if (local.equals(url)) {
             return true;
         }
-        logger.debug("进入到了访问权限认证--当前用户正在访问的 url => " + url);
+        logger.error("进入到了访问权限认证--当前用户正在访问的 url => " + url);
         //下面方法会不断的将url与用户的权限进行匹配
         boolean isPermitted = subject.isPermitted(url);
         System.out.println("-----验证结果是" + isPermitted);
