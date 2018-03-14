@@ -13,6 +13,7 @@
      -->
     <bean id="sampleRealm" class="com.sac.shiro.core.SecurityRealm">
         <!-- 将自定义的权限匹配器注入到自定义 Realm 中 -->
+        <!--默认使用WildcardPermission，这里使用我们自定义的permission比较-->
         <property name="permissionResolver" ref="permissionResolver"/>
         <!--密碼通過credentialsMatcher比對-->
         <property name="credentialsMatcher">
