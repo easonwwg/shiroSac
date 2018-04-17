@@ -2,13 +2,11 @@ package com.sac.aop;
 
 import com.sac.exception.BaseException;
 import org.apache.log4j.Logger;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,9 +16,9 @@ import java.util.Map;
  * @Date: 14:05,2017/11/7
  * @ModifiedBy
  */
-public class ExceptionHandler implements HandlerExceptionResolver {
+public class MyExceptionHandler implements HandlerExceptionResolver {
 
-    private Logger logger = Logger.getLogger(ExceptionHandler.class);
+    private Logger logger = Logger.getLogger(MyExceptionHandler.class);
 
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {

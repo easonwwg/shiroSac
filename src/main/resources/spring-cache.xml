@@ -26,8 +26,8 @@
 		<!-- 端口，默认6379 -->
 	    <constructor-arg index="2" value="6379"  name="port" type="int"/>
 	    <constructor-arg index="3" value="50000"  name="timeout" type="int"/>
-	    <constructor-arg index="1" value="10.137.225.169" name="host" type="java.lang.String"/>
-	 <constructor-arg index="4" value="sacsis" name="password" type="java.lang.String"/>
+	    <constructor-arg index="1" value="192.168.1.106" name="host" type="java.lang.String"/>
+	 <constructor-arg index="4" value="1qazXSW@" name="password" type="java.lang.String"/>
 	   
 	</bean>
 	<!-- 

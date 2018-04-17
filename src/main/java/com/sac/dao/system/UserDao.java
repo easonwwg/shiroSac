@@ -26,5 +26,7 @@ public interface UserDao extends GenericDao<User, String> {
      */
     User login(@Param("name") String name);
 
+    int deleteUser(@Param("name") String name);
+
 }
 

@@ -1,11 +1,13 @@
 package com.sac.web;
 
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.BitSet;
 
@@ -14,7 +16,7 @@ import java.util.BitSet;
  */
 
 @Controller
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/user")
 public class UsersController {
 
     private static  final Logger logger= LoggerFactory.getLogger(UsersController.class);
@@ -36,5 +38,11 @@ public class UsersController {
         return "main";
     }
 
+    @RequiresRoles({"superAdmin"})
+    @RequestMapping(value = "/update",method = RequestMethod.GET)
+    @ResponseBody
+    public String list1(){
+        return "main";
+    }
 
 }

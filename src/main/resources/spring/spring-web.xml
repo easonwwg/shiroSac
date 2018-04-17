@@ -64,7 +64,7 @@
 
     <!--定义控制器方法的拦截，主要可以记录一些日志的信息
          方法1-->
-   <bean id="controllerMethodInterceptor" class="com.sac.aop.ControllerMethodInterceptor">
+    <bean id="controllerMethodInterceptor" class="com.sac.aop.ControllerMethodInterceptor">
     </bean>
     <aop:config proxy-target-class="true">
         <aop:pointcut id="methodPoint"
@@ -75,5 +75,8 @@
     </aop:config>
 
     <!--统一异常处理-->
-    <bean id="exceptionHandler" class="com.sac.aop.ExceptionHandler"/>
+    <bean id="exceptionHandler" class="com.sac.aop.MyExceptionHandler"/>
+
+    <bean id="globalExceptionHandler" class="com.sac.aop.GlobalExceptionHandler"/>
+
 </beans>

@@ -1,31 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sac.dao.system.UserDao">
 
-	<!--表字段的代码块-->
-	<sql id="Base_Column_List">
+    <!--表字段的代码块-->
+    <sql id="Base_Column_List">
       id, nickname, email, pswd, create_time, last_login_time,status
 	</sql>
 
+    <delete id="deleteUser" >
+        delete FROM u_user
+          WHERE
+        nickname=#{name}
+    </delete>
 
-	<!--插入用户-->
-	<insert id="insertModel" useGeneratedKeys="true" keyProperty="id"
-			parameterType="com.sac.pojo.system.User">
+    <!--插入用户-->
+    <insert id="insertModel" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.sac.pojo.system.User">
      insert into u_user (id, nickname, email,
       pswd, create_time, last_login_time,status
       )
-    values (#{record.id},#{record.nickname}, #{record.email},
-      #{record.pswd}, #{record.createTime}, #{record.lastLoginTime},
-      #{record.status}
+    values (#{id},#{nickName}, #{email},
+      #{pswd}, #{createTime}, #{lastLoginTime},
+      #{status}
       )
 	</insert>
 
 
-	<!--获取用户的所有角色-->
-	<select id="listRoleByUserId" resultType="string"
-			parameterType="int">
+    <!--获取用户的所有角色-->
+    <select id="listRoleByUserId" resultType="string"
+            parameterType="int">
 		SELECT
 		ur.name
 		from u_role ur
@@ -37,13 +42,15 @@
 		uu.id=#{uid}
 	</select>
 
-	<!--根据用户nickName获取用户的信息-->
-	<select id="login" resultType="com.sac.pojo.system.User">
-		SELECT
-		<include refid="Base_Column_List"></include>
-		FROM u_user
-		WHERE
-		nickname=#{name}
-	</select>
+    <!--根据用户nickName获取用户的信息-->
+    <select id="login" resultType="com.sac.pojo.system.User">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM u_user
+        WHERE
+        nickname=#{name}
+    </select>
+
+
 
 </mapper>

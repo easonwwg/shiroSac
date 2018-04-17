@@ -51,9 +51,9 @@
     </bean>
 
     <!-- 配置 shiro 的 ehcache 缓存相关,这个缓存只和 Realm 相关 -->
-    <!-- <bean id="ehCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-         <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
-     </bean>-->
+    <bean id="ehCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
+    </bean>
 
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
@@ -75,6 +75,7 @@
                 /swagger-resources/** = anon
                 /v2/** = anon
                 /swagger-ui.html = anon
+                /exception/** = anon
                 /** = authc , resourceCheckFilter ,kictOut
             </value>
         </property>
@@ -92,7 +93,6 @@
         <!--如需要注解开发 需要加如下内容-->
         <property name="proxyTargetClass" value="true"/>
     </bean>
-
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager"/>
     </bean>
