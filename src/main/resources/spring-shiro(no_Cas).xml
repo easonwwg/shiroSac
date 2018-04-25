@@ -75,7 +75,7 @@
                 /swagger-resources/** = anon
                 /v2/** = anon
                 /swagger-ui.html = anon
-                /exception/** = anon
+                /user/list1= anon
                 /** = authc , resourceCheckFilter ,kictOut
             </value>
         </property>
