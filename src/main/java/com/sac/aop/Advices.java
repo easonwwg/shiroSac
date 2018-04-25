@@ -27,7 +27,8 @@ import java.util.Set;
 public class Advices {
 
     // 切点
-    @Pointcut("execution(* com.sac.aop.aopservice.IMyMath.a*(..))")
+    //@Pointcut("execution(* com.sac.aop.aopservice.IMyMath.a*(..))") //接口代理测试
+    @Pointcut("execution(* com.sac.aop.aopservice.impl.IMyMathImpl.a*(..))") //类代理测试
     public void pointcut() {
     }
 

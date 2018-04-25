@@ -1,6 +1,7 @@
 package com.sac.web;
 
 import com.sac.aop.aopservice.IMyMath;
+import com.sac.aop.aopservice.impl.IMyMathImpl;
 import com.sac.pojo.PojoValidate;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
@@ -28,8 +29,17 @@ import java.util.Map;
 @RequestMapping(value = "/user")
 public class UsersController {
 
+    /**
+     * aop接口测试 基于jdk动态代理
+     */
     @Autowired
     private IMyMath iMyMath;
+
+    /**
+     * aop类测试，基于cglib代理
+     */
+    @Autowired
+    private IMyMathImpl iMyMath1;
     private static final Logger logger = LoggerFactory.getLogger(UsersController.class);
 
     /**
@@ -57,19 +67,13 @@ public class UsersController {
         return "main";
     }
 
-    @RequestMapping(value = "/list1", method = RequestMethod.POST)
+    @RequestMapping(value = "/validateTest", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> testValidate(@RequestBody PojoValidate pojoValidate) {
-       Map<String, String> maps = new HashMap<>();
-        /* if (bindingResult.hasErrors()) {
-            for (ObjectError objectError : bindingResult.getAllErrors()) {
-                System.out.println(objectError.getDefaultMessage());
-                maps.put("x", objectError.getDefaultMessage());
-            }
-            return maps;
-        }*/
+        Map<String, String> maps = new HashMap<>();
         maps.put("sd", pojoValidate.getUserName());
-        int result = iMyMath.add(pojoValidate);
+        //int result = iMyMath.add(pojoValidate);
+        int result = iMyMath1.add(pojoValidate);
         System.out.println(result);
         return maps;
     }
