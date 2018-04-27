@@ -1,19 +1,19 @@
 package com.sac.aop;
 
 import com.sac.exception.BusinessException;
-import com.sac.pojo.PojoValidate;
-import org.aspectj.lang.JoinPoint;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.lang.reflect.Method;
 import java.util.Set;
 
 /**
@@ -27,14 +27,22 @@ import java.util.Set;
 public class Advices {
 
     // 切点
-    //@Pointcut("execution(* com.sac.aop.aopservice.IMyMath.a*(..))") //接口代理测试
-    @Pointcut("execution(* com.sac.aop.aopservice.impl.IMyMathImpl.a*(..))") //类代理测试
+    @Pointcut("execution(* com.sac.aop.aopservice.IMyMath.a*(..))") //接口代理测试
+    // @Pointcut("execution(* com.sac.aop.aopservice.impl.IMyMathImpl.a*(..))") //类代理测试
+    //@Pointcut("execution(* com.sac.web.UsersController.t*(..))")
+    //@Pointcut("execution(* org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter.handle(..))")
     public void pointcut() {
     }
 
+    @Pointcut("execution(* com.sac.web.UsersController.t*(..))")
+    public void pointcut1() {
+    }
 
-    @Around("pointcut()")
+    @Around("pointcut() || pointcut1() ")
     public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        MethodSignature methodSignature = (MethodSignature) proceedingJoinPoint.getSignature();
+        Method method = methodSignature.getMethod();
+        System.out.println(method.getName());
         System.out.println("環繞前做校验");
         ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
         Validator validator = vf.getValidator();
