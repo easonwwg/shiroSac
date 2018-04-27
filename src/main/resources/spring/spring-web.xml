@@ -81,6 +81,7 @@
                        advice-ref="controllerMethodInterceptor"/>
       </aop:config>-->
 
+    <!--spring-mvc和service中都要加入-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <!--统一异常处理-->
     <bean id="exceptionHandler" class="com.sac.aop.MyExceptionHandler"/>

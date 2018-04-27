@@ -20,14 +20,15 @@
             base-package="com.sac.aop.aopservice.impl"/>
 
     <bean id="apoDevice" class="com.sac.aop.Advices"/>
-
-    <aop:config>
-        <aop:pointcut id="perform" expression="execution(* com.sac.web.UsersController.t*(..))
-                                                  or execution(* com.sac.aop.aopservice.IMyMath.a*(..)) "></aop:pointcut>
-        <aop:aspect ref="apoDevice">
-            <aop:around method="around" pointcut-ref="perform"></aop:around>
-        </aop:aspect>
-    </aop:config>
+    <!--spring-mvc和service中都要加入-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--  <aop:config>
+          <aop:pointcut id="perform" expression="execution(* com.sac.web.UsersController.t*(..))
+                                                    or execution(* com.sac.aop.aopservice.IMyMath.a*(..)) "></aop:pointcut>
+          <aop:aspect ref="apoDevice">
+              <aop:around method="around" pointcut-ref="perform"></aop:around>
+          </aop:aspect>
+      </aop:config>-->
 
     <!-- 配置事务管理器 -->
     <bean id="transactionManager"

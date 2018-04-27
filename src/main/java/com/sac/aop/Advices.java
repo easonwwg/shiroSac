@@ -37,7 +37,7 @@ public class Advices {
     public void pointcut1() {
     }
 
-    // @Around("pointcut1() || pointcut()")
+    @Around("pointcut1() || pointcut()")
     public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) proceedingJoinPoint.getSignature();
         Method method = methodSignature.getMethod();
