@@ -29,16 +29,15 @@ public class Advices {
     // 切点
     @Pointcut("execution(* com.sac.aop.aopservice.IMyMath.a*(..))") //接口代理测试
     // @Pointcut("execution(* com.sac.aop.aopservice.impl.IMyMathImpl.a*(..))") //类代理测试
-    //@Pointcut("execution(* com.sac.web.UsersController.t*(..))")
-    //@Pointcut("execution(* org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter.handle(..))")
     public void pointcut() {
     }
 
     @Pointcut("execution(* com.sac.web.UsersController.t*(..))")
+    //@Pointcut("execution(* org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter.handle(..))")
     public void pointcut1() {
     }
 
-    @Around("pointcut() || pointcut1() ")
+    // @Around("pointcut1() || pointcut()")
     public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) proceedingJoinPoint.getSignature();
         Method method = methodSignature.getMethod();
