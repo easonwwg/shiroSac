@@ -117,8 +117,8 @@ public class UsersController {
 
     @RequestMapping(value = "/list1", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, String> acontrollerTest(@RequestBody PojoValidate pojoValidate) {
-       // ExecutableValidator
+    public Map<String, String> controllerTest(@RequestBody PojoValidate pojoValidate) {
+        // ExecutableValidator
         Map<String, String> maps = new HashMap<>();
         maps.put("sd", pojoValidate.getUserName());
         // pojoValidate.setAge(20);

@@ -48,25 +48,30 @@ public class Advices {
         System.out.println(methodName + "---環繞前做校验");
         ValidatorFactory vf = Validation.buildDefaultValidatorFactory();
         Validator validator = vf.getValidator();
-        Object po = proceedingJoinPoint.getArgs()[0];
-        Set<ConstraintViolation<Object>> validates = validator.validate(po);
-        {
+        Object[] parameterValues = proceedingJoinPoint.getArgs();
+        //控制器校验
+        if (methodName.startsWith("c")) {
+            Object parameterValues1 = proceedingJoinPoint.getArgs()[0];
+            Set<ConstraintViolation<Object>> validates = validator.validate(parameterValues1);
+            for (ConstraintViolation<Object> item : validates) {
+                System.out.println(item.getMessage());
+                throw new BusinessException(item.getMessage());
+            }
+        }
+        //service校验
+        else {
+
+            //下面的仅仅对在方法参数上直接写校验注解使用
             //2.获取校验方法参数的校验器
             ExecutableValidator validatorParam = validator.forExecutables();
             //获取要校验的方法
             Method validateMethod = method;
             ///传递校验参数的输入的参数
-            Object[] paramObjects = new Object[]{po};
-            Set<ConstraintViolation<Object>> objs = validatorParam.validateParameters(proceedingJoinPoint.getTarget(), validateMethod, paramObjects);
+            Set<ConstraintViolation<Object>> objs = validatorParam.validateParameters(proceedingJoinPoint.getTarget(), validateMethod, parameterValues);
             for (ConstraintViolation<Object> item : objs) {
                 System.out.println(item.getMessage());
                 throw new BusinessException(item.getMessage());
             }
-
-        }
-        for (ConstraintViolation<Object> item : validates) {
-            System.out.println(item.getMessage());
-            throw new BusinessException(item.getMessage());
         }
         Object object = proceedingJoinPoint.proceed();
         System.out.println(methodName + "---環繞后");
