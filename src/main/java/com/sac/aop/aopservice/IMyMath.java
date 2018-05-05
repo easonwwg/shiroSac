@@ -2,6 +2,8 @@ package com.sac.aop.aopservice;
 
 import com.sac.pojo.PojoValidate;
 
+import javax.validation.constraints.Min;
+
 /**
  * @author:eason
  * @Description
@@ -10,6 +12,11 @@ import com.sac.pojo.PojoValidate;
  */
 public interface IMyMath {
 
-    int add(PojoValidate pojoValidate);
+
+    // int add(PojoValidate pojoValidate);
+
+
+    int add(@Min(50) int age);
+
 
 }

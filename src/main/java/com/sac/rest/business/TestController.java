@@ -2,6 +2,9 @@ package com.sac.rest.business;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -20,7 +23,6 @@ import java.util.List;
 @RequestMapping("/user")
 @Api(value = "user", description = "用户管理接口")
 public class TestController {
-
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     @ResponseBody
     @ApiOperation(notes = "get", httpMethod = "GET", value = "获取用户名")

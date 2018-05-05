@@ -7,26 +7,24 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.BitSet;
-import java.util.HashMap;
-import java.util.Map;
+import javax.validation.executable.ExecutableValidator;
+import java.util.*;
 
 /**
  * Created by 99079 on 2017/9/21.
  */
 
 @Controller
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/users")
 public class UsersController {
 
     /**
@@ -40,6 +38,8 @@ public class UsersController {
      */
     @Autowired
     private IMyMathImpl iMyMath1;
+
+
     private static final Logger logger = LoggerFactory.getLogger(UsersController.class);
 
     /**
@@ -52,12 +52,60 @@ public class UsersController {
      *
      * @return
      */
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String list(Model model) {
-        // List<Role> roleList = roleService.list();
-        // model.addAttribute("roleList",roleList);
-        System.out.print("ok");
-        return "main";
+    /**
+     * 使用矩阵变量
+     * http://localhost:8081/users/persons/nj;age=50/pets/21;q=22
+     */
+    @GetMapping("/goods/{country}/se/{age}")
+    @ResponseBody
+    public String findPet(
+            @PathVariable String ownerId,
+            @PathVariable String petId,
+            @MatrixVariable(name = "q", pathVar = "ownerId") int q1,
+            @MatrixVariable(name = "q", pathVar = "petId") int q2) {
+        System.out.println("--> ownerId : " + ownerId);
+        System.out.println("--> petId : " + petId);
+        System.out.println("--> q1 : " + q1);
+        System.out.println("--> q2 : " + q2);
+
+        return "/examples/targets/test1";
+    }
+
+    /**
+     * http://localhost:8081/users/owners/42/5
+     *
+     * @param ownerId
+     * @param petId
+     * @return
+     */
+    @GetMapping("/owners/{ownerId}/{petId}")
+    @ResponseBody
+    public String findPet1(
+            @PathVariable String ownerId,
+            @PathVariable String petId) {
+        return "/examples/targets/test1";
+    }
+
+    //        http://localhost:8081/users/goods/mac;price=15400,20000;country=nj,bj/sales;top=300
+    @GetMapping("/goods/{type}/{number}")
+    @ResponseBody
+    public String findPet2(
+            @PathVariable String type,
+            @MatrixVariable(name = "price", pathVar = "type") List<Integer> prices,
+            @MatrixVariable(name = "country", pathVar = "type") List<String> country,
+            @MatrixVariable(name = "top", pathVar = "number") List<String> top
+    ) {
+        return "/examples/targets/test1";
+    }
+
+    //http://localhost:8081/users/goods1/mac;price=15400;country=bj,nj
+    @GetMapping("/goods1/{type}")
+    @ResponseBody
+    public String findPet21(
+            @PathVariable String type,
+            @MatrixVariable(pathVar = "type") Map<String, Object> petMatrixVars
+    ) {
+        return "/examples/targets/test1";
     }
 
     @RequiresRoles({"superAdmin"})
@@ -67,15 +115,19 @@ public class UsersController {
         return "main";
     }
 
-    @RequestMapping(value = "/validateTest", method = RequestMethod.POST)
+    @RequestMapping(value = "/list1", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, String> testValidate(@RequestBody PojoValidate pojoValidate) {
+    public Map<String, String> acontrollerTest(@RequestBody PojoValidate pojoValidate) {
+       // ExecutableValidator
         Map<String, String> maps = new HashMap<>();
         maps.put("sd", pojoValidate.getUserName());
-        //int result = iMyMath.add(pojoValidate);
-        int result = iMyMath1.add(pojoValidate);
-        System.out.println(result);
+        // pojoValidate.setAge(20);
+        int result = iMyMath.add(20);
+        //int result = iMyMath1.add(pojoValidate);
+        // System.out.println(result);
         return maps;
     }
 
 }
+
+
